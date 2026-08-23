@@ -1,0 +1,55 @@
+{
+  "slug": "hops",
+  "summary": "Hops is a free, bold Bootstrap 5 website template for craft breweries and taprooms, built with a dark industrial charcoal-amber-teal palette and a heavy condensed Anton display face. It ships as two pages — a one-page home and a dedicated full tap list with kitchen menu — and is fully responsive and jQuery-free. Every interaction, from beer-style filtering to the photo lightbox and shopping bag, is written in vanilla JavaScript.",
+  "features": [
+    "Filterable on-tap beer grid (IPA, Lager, Stout, Sour, Seasonal) with ABV, IBU and CSS glass-colour indicators",
+    "Dedicated full tap-list tables plus a two-column taproom food menu on beers.html",
+    "Live taproom hours card that auto-highlights the current day",
+    "Six-step brewing-process stepper and an our-story section",
+    "Dated recurring events strip and a merch shop with an add-to-bag counter",
+    "Keyboard-accessible photo gallery lightbox with arrow, Escape and focus-return support",
+    "Newsletter sign-up with inline email validation and count-up hero stats",
+    "Self-hosted Bootstrap 5, zero jQuery, and prefers-reduced-motion honoured throughout"
+  ],
+  "bestFor": [
+    "Craft breweries and microbreweries",
+    "Taprooms and brewpubs",
+    "Cideries, meaderies and distillery tasting rooms",
+    "Beer bars and bottle shops",
+    "Any drinks brand wanting a bold industrial look"
+  ],
+  "faqs": [
+    {
+      "q": "Is the Hops template really free to use?",
+      "a": "Yes. Hops is free for both personal and commercial projects, so you can use it for a real brewery or taproom site at no cost. There is no purchase, subscription or attribution requirement baked into the markup. You are free to rebrand the colours, copy and logo to match your own brewery."
+    },
+    {
+      "q": "Does Hops use jQuery or any heavy frameworks?",
+      "a": "No. Every interaction is written in plain vanilla JavaScript, organised as one small function per feature with guard clauses. The only third-party dependency is Bootstrap 5, which is self-hosted in the css/vendor and js/vendor folders rather than loaded from a CDN. That keeps the template fast, dependency-light and easy to maintain."
+    },
+    {
+      "q": "How do I add or change beers on the tap list?",
+      "a": "Each beer on the home page is a self-contained `.beer-card` article with a `data-style` attribute that drives the filter. Copy an existing card, change the name, style chip, ABV, IBU and tasting notes, and set the glass colour with the inline `--pour` custom property. The full tap tables on beers.html are plain HTML table rows, so adding a beer there is just a new `<tr>` with a colour swatch."
+    },
+    {
+      "q": "Will the template work if a visitor has JavaScript disabled?",
+      "a": "Yes. Hops is built with progressive enhancement, so all content is fully visible without JavaScript. Animation start-states such as fade-and-rise reveals are scoped under a `.js` class that is only added when scripts run, so nothing is hidden when JavaScript is off. Interactive extras like filtering and the lightbox simply degrade gracefully."
+    },
+    {
+      "q": "Is Hops mobile responsive?",
+      "a": "Yes, it is mobile-first and responsive from small phones up to large desktops. The navbar collapses into a working toggler menu, the beer and merch grids reflow with CSS auto-fill columns, and the tap tables scroll horizontally inside their own container so the page body never breaks. Layouts were built with flexbox and CSS grid rather than fixed widths."
+    },
+    {
+      "q": "How accessible is the template?",
+      "a": "Hops uses semantic landmark elements, descriptive alt text on every image, and ARIA attributes on custom widgets like the filter buttons and gallery lightbox. There is a skip link, visible focus outlines, and full keyboard support — the lightbox handles arrow keys and Escape and returns focus to the trigger on close. All motion respects the user's prefers-reduced-motion setting."
+    },
+    {
+      "q": "What do I need to change before launching my own brewery site?",
+      "a": "Swap the placeholder images in the img folder, then update the brewery name, address, phone, email and Google Maps link, which appear in the navbar, location block and footer. Edit the beer cards, events, merch and food menu with your real products and prices, and point the newsletter and add-to-bag actions at your own backend if you want live checkout. The colour palette lives in CSS custom properties at the top of css/style.css for quick rebranding."
+    },
+    {
+      "q": "Which pages are included and how are they structured?",
+      "a": "There are two pages. index.html is a one-page site with hero, on-tap grid, taproom, our-story, events, shop, gallery, location and newsletter sections linked by an in-page anchored nav. beers.html is a dedicated menu page with full core and seasonal tap tables, tasting-flight info and a two-column kitchen food menu. Both share the same navbar, footer, stylesheet and JavaScript file."
+    }
+  ]
+}

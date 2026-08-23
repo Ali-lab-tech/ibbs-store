@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>document.documentElement.classList.add('js')</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Full Tap List &amp; Taproom Menu &mdash; Hops Brewing Co.</title>
+    <meta name="description" content="The complete Hops tap list — every beer on the wall with ABV, IBU and tasting notes — plus the taproom food menu, tasting flights and growler fills.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="hp-nav navbar navbar-expand-lg" aria-label="Primary">
+      <div class="container">
+        <a class="navbar-brand" href="index.html" aria-label="Hops Brewing Co. home">Hops<span class="dot">.</span></a>
+
+        <div class="d-flex align-items-center order-lg-3 nav-cta-wrap">
+          <a href="index.html#location" class="hp-btn hp-btn--teal hp-btn--sm d-none d-sm-inline-flex">Visit Taproom</a>
+          <button class="navbar-toggler ms-2 d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#hpNavMenu" aria-controls="hpNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="hp-toggler-bar"></span><span class="hp-toggler-bar"></span><span class="hp-toggler-bar"></span>
+          </button>
+        </div>
+
+        <div id="hpNavMenu" class="collapse navbar-collapse order-lg-2">
+          <ul class="navbar-nav mx-lg-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#ontap">On Tap</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#taproom">Taproom</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#events">Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#shop">Shop</a></li>
+            <li class="nav-item"><a class="nav-link active" href="beers.html">Full Menu</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main">
+
+    <!-- ================= PAGE HEAD ================= -->
+    <header class="page-head">
+      <div class="page-head__media">
+        <img src="img/hero-taproom.jpg" alt="Close-up of the Hops tap handles lined up along the bar" width="1920" height="900" fetchpriority="high">
+      </div>
+      <div class="container">
+        <p class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Full Menu</p>
+        <h1>The Full <span class="text-amber">Tap List</span></h1>
+        <p class="lead-muted" style="margin:1rem auto 0">Everything on the wall right now — core, seasonal and limited — plus the kitchen menu and tasting flights.</p>
+      </div>
+    </header>
+
+    <!-- ================= CORE + SEASONAL TAP TABLE ================= -->
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow reveal">Core Line-Up</span>
+        <h2 class="section-title reveal">Always <em>On</em></h2>
+        <p class="lead-muted reveal" style="margin-bottom:2.4rem">The eight beers we never let run dry. If it&rsquo;s your first time, start at the top and work down.</p>
+
+        <div class="tap-table-wrap reveal">
+          <table class="tap-table">
+            <thead>
+              <tr><th scope="col">Colour</th><th scope="col">Beer</th><th scope="col">Style</th><th scope="col">ABV</th><th scope="col">IBU</th><th scope="col">Tasting Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="tap-swatch" style="background:#d98a12"></span></td><td class="t-name">Ironside</td><td><span class="style-chip" data-s="IPA">IPA</span></td><td class="t-abv">6.8%</td><td>65</td><td>Pine, grapefruit pith, resinous dry finish.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#e9c249"></span></td><td class="t-name">Foundry</td><td><span class="style-chip" data-s="Lager">Lager</span></td><td class="t-abv">4.9%</td><td>22</td><td>Crisp, bready malt with a clean, snappy close.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#e9a534"></span></td><td class="t-name">Hazy Foreman</td><td><span class="style-chip" data-s="IPA">IPA</span></td><td class="t-abv">6.5%</td><td>40</td><td>Mango, tangerine, soft and pillowy. NEIPA.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#edcf5c"></span></td><td class="t-name">Coldsnap</td><td><span class="style-chip" data-s="Lager">Lager</span></td><td class="t-abv">5.0%</td><td>35</td><td>German pilsner — floral Saaz, cracker malt, dry.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#1a120c"></span></td><td class="t-name">Nightshift</td><td><span class="style-chip" data-s="Stout">Stout</span></td><td class="t-abv">7.2%</td><td>45</td><td>Roasted coffee, dark chocolate, nitro-smooth.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#2a1a10"></span></td><td class="t-name">Molasses</td><td><span class="style-chip" data-s="Stout">Stout</span></td><td class="t-abv">6.0%</td><td>30</td><td>Toffee, cocoa, dark stone fruit. Robust porter.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#e8681f"></span></td><td class="t-name">Sun Cutter</td><td><span class="style-chip" data-s="Sour">Sour</span></td><td class="t-abv">5.1%</td><td>8</td><td>Passionfruit, lime, tart and bright kettle sour.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#c8324f"></span></td><td class="t-name">Rhubarb Riot</td><td><span class="style-chip" data-s="Sour">Sour</span></td><td class="t-abv">4.6%</td><td>6</td><td>Rhubarb and strawberry over a soft wheat base.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SEASONAL + LIMITED ================= -->
+    <section class="section section--ink2">
+      <div class="container">
+        <span class="eyebrow reveal">Rotating</span>
+        <h2 class="section-title reveal">Seasonal &amp; <em>Limited</em></h2>
+        <p class="lead-muted reveal" style="margin-bottom:2.4rem">Here while they last. When a keg blows, it&rsquo;s gone until next year — or forever.</p>
+
+        <div class="tap-table-wrap reveal">
+          <table class="tap-table">
+            <thead>
+              <tr><th scope="col">Colour</th><th scope="col">Beer</th><th scope="col">Style</th><th scope="col">ABV</th><th scope="col">IBU</th><th scope="col">Tasting Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="tap-swatch" style="background:#b5601c"></span></td><td class="t-name">Harvest Amber</td><td><span class="style-chip" data-s="Seasonal">Seasonal</span></td><td class="t-abv">5.6%</td><td>28</td><td>Caramel malt, toasted hazelnut, autumn spice.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#7a1f14"></span></td><td class="t-name">Frostbite</td><td><span class="style-chip" data-s="Seasonal">Seasonal</span></td><td class="t-abv">8.4%</td><td>32</td><td>Spiced winter ale — cinnamon, orange peel, warming.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#3f2a12"></span></td><td class="t-name">Barrel No. 9</td><td><span class="style-chip" data-s="Stout">Stout</span></td><td class="t-abv">11.2%</td><td>38</td><td>Bourbon-barrel imperial stout — vanilla, oak, fig.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#efd36a"></span></td><td class="t-name">Dock Light</td><td><span class="style-chip" data-s="Lager">Lager</span></td><td class="t-abv">4.2%</td><td>18</td><td>Session helles — light, gulpable, all-afternoon easy.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#8e2f8a"></span></td><td class="t-name">Bramble</td><td><span class="style-chip" data-s="Sour">Sour</span></td><td class="t-abv">5.4%</td><td>7</td><td>Blackberry and boysenberry, jammy and deep purple.</td></tr>
+              <tr><td><span class="tap-swatch" style="background:#e79a2c"></span></td><td class="t-name">Foreman Reserve</td><td><span class="style-chip" data-s="IPA">IPA</span></td><td class="t-abv">8.1%</td><td>72</td><td>Double IPA — triple dry-hopped, dangerously smooth.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flight-note reveal">
+          <h4>Build A Flight &mdash; $14</h4>
+          <p>Pick any five pours from the boards above and we&rsquo;ll set them up on a wooden paddle, lightest to darkest. The best way to find your next full pint.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAPROOM FOOD MENU ================= -->
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow reveal">From The Kitchen</span>
+        <h2 class="section-title reveal">Taproom <em>Menu</em></h2>
+        <p class="lead-muted reveal" style="margin-bottom:2.6rem">Beer food, done properly — plus whatever the food truck out front is slinging tonight. Kitchen runs until close.</p>
+
+        <div class="menu-grid">
+          <div class="menu-col reveal">
+            <h3>Snacks &amp; Shares</h3>
+            <div class="menu-item">
+              <span class="menu-item__name">Bavarian Pretzel</span><span class="menu-item__dots"></span><span class="menu-item__price">$9</span>
+            </div>
+            <span class="menu-item__desc">Warm, salted, hand-twisted, with Foundry-lager beer-cheese and grain mustard. <span class="menu-item__veg">VEG</span></span>
+            <div class="menu-item">
+              <span class="menu-item__name">Loaded Kettle Chips</span><span class="menu-item__dots"></span><span class="menu-item__price">$11</span>
+            </div>
+            <span class="menu-item__desc">House-fried chips, beer cheese, pickled jalapeño, scallion, smoked salt.</span>
+            <div class="menu-item">
+              <span class="menu-item__name">Crispy Wings</span><span class="menu-item__dots"></span><span class="menu-item__price">$13</span>
+            </div>
+            <span class="menu-item__desc">Six wings tossed in hop-honey buffalo or dry Nightshift-stout rub.</span>
+            <div class="menu-item">
+              <span class="menu-item__name">Beer-Battered Pickles</span><span class="menu-item__dots"></span><span class="menu-item__price">$8</span>
+            </div>
+            <span class="menu-item__desc">Dill spears in a Coldsnap-pilsner batter, buttermilk ranch. <span class="menu-item__veg">VEG</span></span>
+            <div class="menu-item">
+              <span class="menu-item__name">Soft Pretzel Board</span><span class="menu-item__dots"></span><span class="menu-item__price">$16</span>
+            </div>
+            <span class="menu-item__desc">Two pretzels, beer cheese, mustard, cured meats and pickles. Feeds the table.</span>
+          </div>
+
+          <div class="menu-col reveal reveal-d1">
+            <h3>Handhelds</h3>
+            <div class="menu-item">
+              <span class="menu-item__name">The Ironside Burger</span><span class="menu-item__dots"></span><span class="menu-item__price">$15</span>
+            </div>
+            <span class="menu-item__desc">Smashed double patty, aged cheddar, IPA-caramelised onion, house sauce, fries.</span>
+            <div class="menu-item">
+              <span class="menu-item__name">Nashville Hot Chicken</span><span class="menu-item__dots"></span><span class="menu-item__price">$14</span>
+            </div>
+            <span class="menu-item__desc">Buttermilk-fried thigh, pickles, slaw, brioche. Order it hot or honey-mild.</span>
+            <div class="menu-item">
+              <span class="menu-item__name">Foundry Bratwurst</span><span class="menu-item__dots"></span><span class="menu-item__price">$13</span>
+            </div>
+            <span class="menu-item__desc">Lager-simmered brat, kraut, grain mustard, soft pretzel roll.</span>
+            <div class="menu-item">
+              <span class="menu-item__name">Smash Mushroom Melt</span><span class="menu-item__dots"></span><span class="menu-item__price">$13</span>
+            </div>
+            <span class="menu-item__desc">Roasted mushroom, provolone, herb aioli, griddled sourdough. <span class="menu-item__veg">VEG</span></span>
+            <div class="menu-item">
+              <span class="menu-item__name">Loaded Brisket Fries</span><span class="menu-item__dots"></span><span class="menu-item__price">$15</span>
+            </div>
+            <span class="menu-item__desc">Smoked brisket, beer cheese, pickled onion and jalapeño over fries.</span>
+          </div>
+        </div>
+
+        <div class="flight-note reveal" style="border-left-color:var(--amber)">
+          <h4>Food Trucks Nightly</h4>
+          <p>Smoke &amp; Barrel BBQ parks up on Fridays and La Birria Taco Co. on Saturdays, with a rotating guest truck every Sunday. The kitchen stays open too — bring both.</p>
+        </div>
+
+        <div class="text-center mt-gap reveal">
+          <a href="index.html#location" class="hp-btn hp-btn--amber">Plan Your Visit</a>
+          <a href="index.html#ontap" class="hp-btn hp-btn--ghost">Back To On Tap</a>
+        </div>
+      </div>
+    </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="hp-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">Hops<span class="dot">.</span></div>
+            <p>Small-batch craft beer brewed loud in the old Ironworks foundry and poured fresh, never further than the length of a hose.</p>
+            <div class="social-row">
+              <a href="#" aria-label="Hops on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+              <a href="#" aria-label="Hops on Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
+              <a href="#" aria-label="Hops on Untappd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20"/><path d="M5 8c0-2 2-4 7-4s7 2 7 4-2 3-7 3-7 1-7 3 2 4 7 4 7-2 7-4"/></svg></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h5>Explore</h5>
+            <ul>
+              <li><a href="index.html#ontap">On Tap</a></li>
+              <li><a href="index.html#taproom">Taproom</a></li>
+              <li><a href="index.html#events">Events</a></li>
+              <li><a href="index.html#shop">Shop</a></li>
+              <li><a href="beers.html">Full Menu</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Visit</h5>
+            <ul>
+              <li>214 Ironworks Ave</li>
+              <li>Bellhaven</li>
+              <li><a href="tel:+15551234822">(555) 123-4822</a></li>
+              <li><a href="mailto:cheers@hopsbrewing.co">cheers@hopsbrewing.co</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Taproom Hours</h5>
+            <ul>
+              <li>Mon &mdash; Closed</li>
+              <li>Tue&ndash;Thu &mdash; 4pm to 10pm</li>
+              <li>Fri &mdash; 3pm to 12am</li>
+              <li>Sat &mdash; 12pm to 12am</li>
+              <li>Sun &mdash; 12pm to 8pm</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 Hops Brewing Co. Built on Bootstrap 5.</span>
+          <span class="age-note">Please enjoy responsibly &middot; You must be of legal drinking age.</span>
+          <span><a href="#main">Back to top &uarr;</a></span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

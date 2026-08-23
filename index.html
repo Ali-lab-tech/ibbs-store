@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>document.documentElement.classList.add('js')</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IBBS</title>
+    <meta name="description" content="Hops is a bold, free Bootstrap 5 website template for craft breweries and taprooms — on-tap beer list, taproom hours, events, merch shop and gallery. Responsive and jQuery-free.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="hp-nav navbar navbar-expand-lg" aria-label="Primary">
+      <div class="container">
+        <a class="navbar-brand" href="index.html" aria-label="Hops Brewing Co. home">IBBS<span class="dot">.</span></a>
+
+        <div class="d-flex align-items-center order-lg-3 nav-cta-wrap">
+          <button class="hp-bag" type="button" aria-label="Shopping bag, 0 items">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span class="hp-bag__count" aria-hidden="true">0</span>
+          </button>
+          <a href="#location" class="hp-btn hp-btn--teal hp-btn--sm d-none d-sm-inline-flex">Visit Taproom</a>
+          <button class="navbar-toggler ms-2 d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#hpNavMenu" aria-controls="hpNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="hp-toggler-bar"></span><span class="hp-toggler-bar"></span><span class="hp-toggler-bar"></span>
+          </button>
+        </div>
+
+        <div id="hpNavMenu" class="collapse navbar-collapse order-lg-2">
+          <ul class="navbar-nav mx-lg-auto">
+            <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#ontap">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="#taproom">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#story">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#events">Clients</a></li>
+            <!-- <li class="nav-item"><a class="nav-link" href="#shop">Shop</a></li>
+            <li class="nav-item"><a class="nav-link" href="beers.html">Full Menu</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <header class="hp-hero" id="home">
+      <div class="hp-hero__media">
+        <img src="img/hero-taproom.jpg" alt="Rows of stainless steel fermentation tanks glowing behind the Hops taproom bar" width="1920" height="1280" fetchpriority="high">
+      </div>
+      <div class="hp-hero__glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10">
+            <span class="hp-hero__kicker"><span class="pip"></span>All Accross Pakistan &middot; Est. 2012</span>
+            <h1>Where Innovation<br>Meets <em>Industry</em> <span class="teal"></span></h1>
+            <p class="hp-hero__sub">Proudly providing industrial services & supplies across Pakistan — combining innovation, expertise, and reliability to support industries nationwide..</p>
+            <div class="hp-hero__cta">
+              <a href="#ontap" class="hp-btn hp-btn--amber">See What&rsquo;s On Products</a>
+              <a href="#location" class="hp-btn hp-btn--ghost">Contact Us</a>
+            </div>
+            <div class="hp-hero__stats">
+              <div class="hp-stat">
+                <div class="hp-stat__num"><span data-count="16">16</span></div>
+                <div class="hp-stat__label">Taps Flowing</div>
+              </div>
+              <div class="hp-stat">
+                <div class="hp-stat__num"><span data-count="42">42</span></div>
+                <div class="hp-stat__label">Recipes Brewed</div>
+              </div>
+              <div class="hp-stat">
+                <div class="hp-stat__num"><span data-count="7">7</span><span class="u">×</span></div>
+                <div class="hp-stat__label">Medals Won</div>
+              </div>
+              <div class="hp-stat">
+                <div class="hp-stat__num">100<span class="u">%</span></div>
+                <div class="hp-stat__label">Brewed On-Site</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= ON TAP ================= -->
+    <section class="section" id="ontap">
+      <div class="container">
+        <div class="tap-head">
+          <div class="reveal">
+            <span class="eyebrow">Currently Provided Services</span>
+            <h2 class="section-title">Our <em>Products</em> Today</h2>
+            <p class="lead-muted">Ten of our sixteen lines, poured fresh from the tanks out back. Filter by style and find your next pint.</p>
+          </div>
+          <div class="tap-head__actions reveal">
+            <button type="button" id="adminToggleBtn" class="hp-btn hp-btn--ghost hp-btn--sm">Admin</button>
+            <button type="button" id="addProductBtn" class="hp-btn hp-btn--amber">+ Add Product</button>
+          </div>
+        </div>
+
+        <div class="filter-bar reveal" role="group" aria-label="Filter products by category">
+          <button class="filter-btn is-active" data-filter="all" aria-pressed="true">All Categories</button>
+          <button class="filter-btn" data-filter="Boiler Parts" aria-pressed="false">Boiler Parts</button>
+          <button class="filter-btn" data-filter="Automation Products" aria-pressed="false">Automation Products</button>
+          <button class="filter-btn" data-filter="Pumps" aria-pressed="false">Pumps</button>
+          <button class="filter-btn" data-filter="Electrical Items" aria-pressed="false">Electrical Items</button>
+          <button class="filter-btn" data-filter="Instruments" aria-pressed="false">Instruments</button>
+          <button class="filter-btn" data-filter="Valves" aria-pressed="false">Valves</button>
+        </div>
+
+        <div class="beer-grid"></div>
+        <p class="no-results" role="status">No products in that category right now.</p>
+      </div>
+    </section>
+
+    <!-- ================= TAPROOM ================= -->
+    <section class="section section--ink2" id="taproom">
+      <div class="container">
+        <div class="taproom-grid">
+          <div class="reveal">
+            <div class="hours-card">
+              <h3>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="color:var(--amber)"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                Office Hours
+              </h3>
+              <div class="hours-row" data-day="1"><span class="day">Monday</span><span class="closed">Closed</span></div>
+              <div class="hours-row" data-day="2,3,4"><span class="day">Tue &ndash; Thu</span><span>4:00 PM &ndash; 10:00 PM</span></div>
+              <div class="hours-row" data-day="5"><span class="day">Friday</span><span>3:00 PM &ndash; 12:00 AM</span></div>
+              <div class="hours-row" data-day="6"><span class="day">Saturday</span><span>12:00 PM &ndash; 12:00 AM</span></div>
+              <div class="hours-row" data-day="0"><span class="day">Sunday</span><span>12:00 PM &ndash; 8:00 PM</span></div>
+              <div class="badge-row">
+                <span class="hp-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5"/><path d="M14 5.172C14 3.782 15.577 2.679 17.5 3c2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.96-1.45-2.344-2.5"/><path d="M8 14v3a4 4 0 0 0 8 0v-3"/><path d="M12 22V11"/></svg>Dog Friendly</span>
+                <span class="hp-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/></svg>Family Welcome</span>
+                <span class="hp-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="M5 12a7 7 0 0 1 14 0"/><path d="M12 5V3"/></svg>Free Wi-Fi</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal reveal-d1">
+            <span class="eyebrow">The Taproom</span>
+            <h2 class="section-title">Pull Up A <em>Stool</em></h2>
+            <p class="lead-muted">No TVs, no bottle service, no pretence — just long communal tables, a shuffleboard, and beer poured a few steps from where it was brewed.</p>
+            <ul class="expect-list">
+              <li>
+                <span class="expect-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg></span>
+                <div><h4>Rotating food trucks</h4><p>Smoke &amp; Barrel BBQ on Fridays, La Birria Taco Co. on Saturdays, plus a rotating guest each Sunday — full schedule posted at the bar.</p></div>
+              </li>
+              <li>
+                <span class="expect-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5"/><path d="M4 11l1 8h14l1-8"/></svg></span>
+                <div><h4>Growler &amp; crowler fills</h4><p>Bring your own 64oz growler or grab a sealed 32oz crowler to go — filled fresh off any line that isn&rsquo;t a nitro pour.</p></div>
+              </li>
+              <li>
+                <span class="expect-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8v4h8Z"/><path d="M8 12h8M8 16h5"/></svg></span>
+                <div><h4>Games &amp; big tables</h4><p>Shuffleboard, a shelf of board games and 40-foot communal tables built for meeting the folks next to you.</p></div>
+              </li>
+              <li>
+                <span class="expect-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20"/><path d="M5 8c0-2 2-4 7-4s7 2 7 4-2 3-7 3-7 1-7 3 2 4 7 4 7-2 7-4"/></svg></span>
+                <div><h4>Flights of five</h4><p>Can&rsquo;t decide? Build a five-pour tasting flight from anything on the board and work your way across the tap wall.</p></div>
+              </li>
+            </ul>
+            <div class="mt-gap"><a href="#location" class="hp-btn hp-btn--amber">Plan Your Visit</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STORY / PROCESS ================= -->
+    <section class="section" id="story">
+      <div class="container">
+        <div class="story-grid">
+          <div class="story-media reveal">
+            <img src="img/brewery-tanks.jpg" alt="Head brewer inspecting a glass of beer beside towering copper brew kettles" width="720" height="820" loading="lazy">
+            <div class="stamp"><b>2014</b><span>Since</span></div>
+          </div>
+          <div class="reveal reveal-d1">
+            <span class="eyebrow">Our Story</span>
+            <h2 class="section-title">A Warehouse, Two Friends &amp; <em>One Stubborn Recipe</em></h2>
+            <p>Hops started in a leaky corner of the old Ironworks foundry, where Dana and Marcus spent two years and forty-one failed batches chasing a single West Coast IPA worth naming. Batch forty-two became Ironside — and the taproom door opened three weeks later.</p>
+            <p>A decade on we still brew every drop on-site in small, stubborn batches. We buy hops by the bale from growers we&rsquo;ve met, mill our own grain, and refuse to ship a beer further than the length of a hose. If it&rsquo;s in your glass, it was made in the room behind you.</p>
+          </div>
+        </div>
+
+        <div class="process">
+          <div class="process-step reveal"><h4>Mill</h4><p>Whole grain crushed in-house the morning of every brew day.</p></div>
+          <div class="process-step reveal reveal-d1"><h4>Mash</h4><p>Steeped hot to convert malt starches into fermentable sugar.</p></div>
+          <div class="process-step reveal reveal-d2"><h4>Boil</h4><p>Ninety minutes with hops added in careful, timed charges.</p></div>
+          <div class="process-step reveal reveal-d1"><h4>Ferment</h4><p>House yeast pitched, then two weeks cool and patient.</p></div>
+          <div class="process-step reveal reveal-d2"><h4>Condition</h4><p>Cold-crashed and rested until it&rsquo;s bright and ready.</p></div>
+          <div class="process-step reveal reveal-d3"><h4>Pour</h4><p>Straight from tank to tap line — never a truck in sight.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EVENTS ================= -->
+    <section class="section events-band" id="events">
+      <img class="events-band__tex" src="img/events-texture.jpg" alt="" aria-hidden="true" width="1600" height="900" loading="lazy">
+      <div class="container">
+        <div class="text-center reveal" style="max-width:640px;margin:0 auto 3rem">
+          <span class="eyebrow" style="justify-content:center">What&rsquo;s On</span>
+          <h2 class="section-title">Taproom <em>Events</em></h2>
+          <p class="lead-muted" style="margin:0 auto">There&rsquo;s a reason to swing by every night of the week. No cover, no reservations — just show up.</p>
+        </div>
+        <div class="events-grid">
+          <div class="event-card reveal">
+            <div class="event-when"><span class="d">Tue</span><span class="t">7 PM</span></div>
+            <div><h4>Trivia Night</h4><p>Six rounds, free to play, and the winning team drinks the next round on us. Host: Marcus, quizmaster.</p></div>
+          </div>
+          <div class="event-card reveal reveal-d1">
+            <div class="event-when"><span class="d">Wed</span><span class="t">6:30 PM</span></div>
+            <div><h4>Run Club</h4><p>An easy 5K loop from the taproom door and a cold pint waiting when you&rsquo;re back. All paces welcome.</p></div>
+          </div>
+          <div class="event-card reveal reveal-d2">
+            <div class="event-when"><span class="d">Fri</span><span class="t">8 PM</span></div>
+            <div><h4>Live Music</h4><p>Local bands on the loading-dock stage — folk, funk and the occasional questionable cover set.</p></div>
+          </div>
+          <div class="event-card reveal">
+            <div class="event-when"><span class="d">1st Fri</span><span class="t">5 PM</span></div>
+            <div><h4>Firkin Friday</h4><p>A one-off cask-conditioned special, tapped by hand at the bar. When the firkin&rsquo;s empty, it&rsquo;s gone.</p></div>
+          </div>
+          <div class="event-card reveal reveal-d1">
+            <div class="event-when"><span class="d">Last Fri</span><span class="t">6 PM</span></div>
+            <div><h4>Tap Takeover</h4><p>A guest brewery we love takes over six of our lines for the night. Meet the brewers, try the rarities.</p></div>
+          </div>
+          <div class="event-card reveal reveal-d2">
+            <div class="event-when"><span class="d">Sun</span><span class="t">2 PM</span></div>
+            <div><h4>Vinyl Sundays</h4><p>Bring a record from home and we&rsquo;ll spin it on the taproom turntable. Slow pours, good grooves.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SHOP / MERCH ================= -->
+    <section class="section" id="shop">
+      <div class="container">
+        <div class="tap-head">
+          <div class="reveal">
+            <span class="eyebrow">Merch &amp; Growlers</span>
+            <h2 class="section-title">Take Some <em>Home</em></h2>
+            <p class="lead-muted">Fill a growler, wear the logo, gift a friend. Tap a bag icon to add to your order and pick it up at the bar.</p>
+          </div>
+        </div>
+
+        <div class="shop-grid">
+          <article class="product-card reveal">
+            <div class="product-card__media"><span class="product-tag">Best Seller</span><img src="img/merch-tee.jpg" alt="Charcoal Hops logo t-shirt laid flat on wood" width="480" height="480" loading="lazy"></div>
+            <div class="product-card__body">
+              <h4>Hops Logo Tee</h4>
+              <p>Heavyweight charcoal cotton with the amber wordmark across the chest.</p>
+              <div class="product-card__foot"><span class="price">$28</span><button class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag data-label="Add to Bag">Add to Bag</button></div>
+            </div>
+          </article>
+          <article class="product-card reveal reveal-d1">
+            <div class="product-card__media"><img src="img/merch-growler.jpg" alt="Amber glass 64-ounce growler with a Hops screen print" width="480" height="480" loading="lazy"></div>
+            <div class="product-card__body">
+              <h4>64oz Glass Growler</h4>
+              <p>Reusable amber growler — buy once, then refill from any open line.</p>
+              <div class="product-card__foot"><span class="price">$15 <small>fill $12+</small></span><button class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag data-label="Add to Bag">Add to Bag</button></div>
+            </div>
+          </article>
+          <article class="product-card reveal reveal-d2">
+            <div class="product-card__media"><img src="img/merch-crowler.jpg" alt="Four-pack of sealed 32-ounce crowler cans in a cardboard carrier" width="480" height="480" loading="lazy"></div>
+            <div class="product-card__body">
+              <h4>Crowler 4-Pack</h4>
+              <p>Four sealed 32oz cans, filled and capped to order. Mix any four beers.</p>
+              <div class="product-card__foot"><span class="price">$18</span><button class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag data-label="Add to Bag">Add to Bag</button></div>
+            </div>
+          </article>
+          <article class="product-card reveal">
+            <div class="product-card__media"><img src="img/merch-glass.jpg" alt="Branded Hops pint glass filled with golden beer" width="480" height="480" loading="lazy"></div>
+            <div class="product-card__body">
+              <h4>Ironside Pint Glass</h4>
+              <p>The proper 16oz shaker glass we pour into — take the taproom home.</p>
+              <div class="product-card__foot"><span class="price">$9</span><button class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag data-label="Add to Bag">Add to Bag</button></div>
+            </div>
+          </article>
+          <article class="product-card reveal reveal-d1">
+            <div class="product-card__media"><img src="img/merch-cap.jpg" alt="Charcoal snapback cap with an embroidered hop cone" width="480" height="480" loading="lazy"></div>
+            <div class="product-card__body">
+              <h4>Hop Cone Snapback</h4>
+              <p>Structured six-panel cap with an embroidered hop cone and flat brim.</p>
+              <div class="product-card__foot"><span class="price">$26</span><button class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag data-label="Add to Bag">Add to Bag</button></div>
+            </div>
+          </article>
+          <article class="product-card reveal reveal-d2">
+            <div class="product-card__media"><img src="img/merch-hoodie.jpg" alt="Heavyweight charcoal pullover hoodie with teal Hops print" width="480" height="480" loading="lazy"></div>
+            <div class="product-card__body">
+              <h4>Brewery Hoodie</h4>
+              <p>Fleece-lined pullover in charcoal with a teal back print. Runs true to size.</p>
+              <div class="product-card__foot"><span class="price">$52</span><button class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag data-label="Add to Bag">Add to Bag</button></div>
+            </div>
+          </article>
+          <article class="product-card reveal">
+            <div class="product-card__media"><img src="img/merch-mug.jpg" alt="Amber and charcoal enamel camp mug with the Hops mark" width="480" height="480" loading="lazy"></div>
+            <div class="product-card__body">
+              <h4>Enamel Camp Mug</h4>
+              <p>Speckled enamel mug for the campfire, the desk, or a porch coffee.</p>
+              <div class="product-card__foot"><span class="price">$16</span><button class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag data-label="Add to Bag">Add to Bag</button></div>
+            </div>
+          </article>
+          <article class="product-card reveal reveal-d1">
+            <div class="product-card__media"><span class="product-tag">Gift</span><img src="img/merch-giftcard.jpg" alt="Charcoal Hops gift card resting on a bar top" width="480" height="480" loading="lazy"></div>
+            <div class="product-card__body">
+              <h4>Taproom Gift Card</h4>
+              <p>Beer, merch, food trucks — good for anything across the bar. Any amount.</p>
+              <div class="product-card__foot"><span class="price">$25 <small>&amp; up</small></span><button class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag data-label="Add to Bag">Add to Bag</button></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="growler-cta reveal">
+          <div>
+            <h3>Growler Fills &mdash; From $12</h3>
+            <p>Bring your own or buy one at the bar. Filled fresh off the line, sealed to travel.</p>
+          </div>
+          <a href="#location" class="hp-btn" style="background:var(--ink);color:var(--bone)">Find The Taproom</a>
+        </div>
+        <p id="bagNote" class="text-teal reveal" role="status" hidden style="margin-top:1.2rem;font-weight:600"></p>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section class="section section--ink2" id="gallery">
+      <div class="container">
+        <div class="text-center reveal" style="max-width:600px;margin:0 auto 3rem">
+          <span class="eyebrow" style="justify-content:center">The Room</span>
+          <h2 class="section-title">Inside <em>Hops</em></h2>
+          <p class="lead-muted" style="margin:0 auto">Tap walls, tank rooms, packed Friday nights and quiet Sunday pours.</p>
+        </div>
+        <div class="gallery-grid">
+          <button class="gallery-item wide reveal" data-full="img/gallery-1.jpg" data-caption="The sixteen-line tap wall at the main bar">
+            <img src="img/gallery-1.jpg" alt="The sixteen-line tap wall at the main bar" width="640" height="400" loading="lazy">
+          </button>
+          <button class="gallery-item tall reveal reveal-d1" data-full="img/gallery-2.jpg" data-caption="Stainless fermentation tanks in the brew room">
+            <img src="img/gallery-2.jpg" alt="Stainless fermentation tanks in the brew room" width="400" height="640" loading="lazy">
+          </button>
+          <button class="gallery-item reveal reveal-d2" data-full="img/gallery-3.jpg" data-caption="A five-pour tasting flight on a wooden paddle">
+            <img src="img/gallery-3.jpg" alt="A five-pour tasting flight on a wooden paddle" width="360" height="360" loading="lazy">
+          </button>
+          <button class="gallery-item reveal reveal-d1" data-full="img/gallery-4.jpg" data-caption="Communal tables full on a Friday night">
+            <img src="img/gallery-4.jpg" alt="Communal tables full on a Friday night" width="360" height="360" loading="lazy">
+          </button>
+          <button class="gallery-item reveal reveal-d1" data-full="img/gallery-5.jpg" data-caption="A fresh pour of Hazy Foreman IPA">
+            <img src="img/gallery-5.jpg" alt="A fresh pour of Hazy Foreman IPA" width="360" height="360" loading="lazy">
+          </button>
+          <button class="gallery-item wide reveal reveal-d2" data-full="img/gallery-6.jpg" data-caption="The loading-dock stage set up for live music">
+            <img src="img/gallery-6.jpg" alt="The loading-dock stage set up for live music" width="640" height="400" loading="lazy">
+          </button>
+          <button class="gallery-item reveal reveal-d1" data-full="img/gallery-7.jpg" data-caption="A dog waiting patiently under a taproom stool">
+            <img src="img/gallery-7.jpg" alt="A dog waiting patiently under a taproom stool" width="360" height="360" loading="lazy">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LOCATION ================= -->
+    <section class="section" id="location">
+      <div class="container">
+        <div class="loc-grid">
+          <div class="reveal">
+            <span class="eyebrow">Find Us</span>
+            <h2 class="section-title">Location &amp; <em>Hours</em></h2>
+            <!-- <p class="lead-muted">Tucked into the old foundry on Ironworks Ave — look for the roll-up door and the smell of hops.</p> -->
+            <div class="loc-card mt-gap">
+              <div class="loc-line">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div><strong>214 Ironworks Ave</strong><br>Bellhaven, Riverside District</div>
+              </div>
+              <div class="loc-line">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+                <div><a href="tel:+15551234822">(555) 123-4822</a></div>
+              </div>
+              <div class="loc-line">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                <div><a href="mailto:cheers@hopsbrewing.co">cheers@hopsbrewing.co</a></div>
+              </div>
+              <div class="loc-line">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <div>Tue&ndash;Thu 4&ndash;10 &middot; Fri 3&ndash;12 &middot; Sat 12&ndash;12 &middot; Sun 12&ndash;8 &middot; <span class="closed" style="color:var(--smoke)">Mon closed</span></div>
+              </div>
+              <div class="mt-gap"><a href="https://www.google.com/maps/search/?api=1&query=214+Ironworks+Ave+Bellhaven" target="_blank" rel="noopener" class="hp-btn hp-btn--amber">Open In Google Maps</a></div>
+            </div>
+          </div>
+          <div class="loc-map reveal reveal-d1">
+            <img src="img/taproom-exterior.jpg" alt="The Hops taproom exterior — a brick foundry building with a roll-up door and neon sign" width="720" height="560" loading="lazy">
+            <div class="loc-map__pin">
+              <a href="https://www.google.com/maps/search/?api=1&query=214+Ironworks+Ave+Bellhaven" target="_blank" rel="noopener" class="hp-btn hp-btn--teal">Get Directions</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NEWSLETTER ================= -->
+    <section class="section newsletter" id="newsletter">
+      <div class="container">
+        <div class="newsletter-inner reveal">
+          <span class="eyebrow" style="justify-content:center">Stay In The Loop</span>
+          <h2 class="section-title">Join The <em>Mash List</em></h2>
+          <p class="lead-muted" style="margin:0 auto">New tap drops, event nights and firkin specials — straight to your inbox, never more than once a week.</p>
+          <form class="news-form" novalidate>
+            <label for="newsEmail" class="visually-hidden">Email address</label>
+            <input type="email" id="newsEmail" name="email" placeholder="you@example.com" autocomplete="email" required>
+            <button type="submit" class="hp-btn hp-btn--amber">Sign Me Up</button>
+          </form>
+          <p class="form-note" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="hp-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">Hops<span class="dot">.</span></div>
+            <p>Small-batch craft beer brewed loud in the old Ironworks foundry and poured fresh, never further than the length of a hose.</p>
+            <div class="social-row">
+              <a href="#" aria-label="Hops on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+              <a href="#" aria-label="Hops on Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
+              <a href="#" aria-label="Hops on Untappd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20"/><path d="M5 8c0-2 2-4 7-4s7 2 7 4-2 3-7 3-7 1-7 3 2 4 7 4 7-2 7-4"/></svg></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h5>Explore</h5>
+            <ul>
+              <li><a href="#ontap">On Tap</a></li>
+              <li><a href="#taproom">Taproom</a></li>
+              <li><a href="#events">Events</a></li>
+              <li><a href="#shop">Shop</a></li>
+              <li><a href="beers.html">Full Menu</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Visit</h5>
+            <ul>
+              <li>214 Ironworks Ave</li>
+              <li>Bellhaven</li>
+              <li><a href="tel:+15551234822">(555) 123-4822</a></li>
+              <li><a href="mailto:cheers@hopsbrewing.co">cheers@hopsbrewing.co</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Office Hours</h5>
+            <ul>
+              <li>Mon &mdash; Closed</li>
+              <li>Tue&ndash;Thu &mdash; 4pm to 10pm</li>
+              <li>Fri &mdash; 3pm to 12am</li>
+              <li>Sat &mdash; 12pm to 12am</li>
+              <li>Sun &mdash; 12pm to 8pm</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 Hops Brewing Co. Built on Bootstrap 5.</span>
+          <span class="age-note">Please enjoy responsibly &middot; You must be of legal drinking age.</span>
+          <span><a href="#home">Back to top &uarr;</a></span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================= ADMIN PIN MODAL ================= -->
+    <div class="hp-modal" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle" aria-hidden="true">
+      <div class="hp-modal__panel">
+        <button type="button" class="hp-modal__close" id="adminModalClose" aria-label="Close">&times;</button>
+        <h3 id="adminModalTitle">Admin Access</h3>
+        <form id="adminForm" novalidate>
+          <div class="hp-field">
+            <label for="adminPin">Enter PIN</label>
+            <input type="password" id="adminPin" name="pin" inputmode="numeric" autocomplete="off" required>
+          </div>
+          <p class="hp-field__error" id="adminError" hidden>Incorrect PIN.</p>
+          <button type="submit" class="hp-btn hp-btn--teal">Unlock</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ================= ADD PRODUCT MODAL ================= -->
+    <div class="hp-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle" aria-hidden="true">
+      <div class="hp-modal__panel">
+        <button type="button" class="hp-modal__close" id="productModalClose" aria-label="Close">&times;</button>
+        <h3 id="productModalTitle">Add A Product</h3>
+        <form id="productForm" novalidate>
+          <div class="hp-field">
+            <label for="pName">Name</label>
+            <input type="text" id="pName" name="name" required>
+          </div>
+          <div class="hp-field">
+            <label for="pStyle">Category</label>
+            <select id="pStyle" name="style" required>
+              <option value="Boiler Parts">Boiler Parts</option>
+              <option value="Automation Products">Automation Products</option>
+              <option value="Pumps">Pumps</option>
+              <option value="Electrical Items">Electrical Items</option>
+              <option value="Instruments">Instruments</option>
+              <option value="Valves">Valves</option>
+            </select>
+          </div>
+          <div class="hp-field">
+            <label for="pImage">Product Image (optional)</label>
+            <input type="file" id="pImage" name="image" accept="image/*">
+            <img id="pImagePreview" alt="" hidden>
+          </div>
+          <div class="hp-field">
+            <label for="pShortDesc">Short Description <span class="hp-field__hint">(shown on the card)</span></label>
+            <textarea id="pShortDesc" name="shortDesc" rows="2" required></textarea>
+          </div>
+          <div class="hp-field">
+            <label for="pFullDesc">Full Description <span class="hp-field__hint">(shown when opened)</span></label>
+            <textarea id="pFullDesc" name="fullDesc" rows="4"></textarea>
+          </div>
+          <button type="submit" class="hp-btn hp-btn--teal">Add Product</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ================= PRODUCT DETAIL / EDIT MODAL ================= -->
+    <div class="hp-modal" id="productDetailModal" role="dialog" aria-modal="true" aria-labelledby="productDetailTitle" aria-hidden="true">
+      <div class="hp-modal__panel hp-modal__panel--wide">
+        <button type="button" class="hp-modal__close" id="productDetailClose" aria-label="Close">&times;</button>
+        <img id="dImagePreview" class="hp-detail__image" alt="" hidden>
+        <h3 id="productDetailTitle" class="hp-detail__view-name"></h3>
+        <span class="style-chip hp-detail__view-style" id="dViewStyle"></span>
+        <p class="hp-detail__view-desc" id="dViewFullDesc"></p>
+
+        <form id="productDetailForm" novalidate hidden>
+          <div class="hp-field">
+            <label for="dName">Name</label>
+            <input type="text" id="dName" name="name" required>
+          </div>
+          <div class="hp-field">
+            <label for="dStyle">Category</label>
+            <select id="dStyle" name="style" required>
+              <option value="Boiler Parts">Boiler Parts</option>
+              <option value="Automation Products">Automation Products</option>
+              <option value="Pumps">Pumps</option>
+              <option value="Electrical Items">Electrical Items</option>
+              <option value="Instruments">Instruments</option>
+              <option value="Valves">Valves</option>
+            </select>
+          </div>
+          <div class="hp-field">
+            <label for="dImage">Product Image</label>
+            <input type="file" id="dImage" name="image" accept="image/*">
+          </div>
+          <div class="hp-field">
+            <label for="dShortDesc">Short Description <span class="hp-field__hint">(shown on the card)</span></label>
+            <textarea id="dShortDesc" name="shortDesc" rows="2" required></textarea>
+          </div>
+          <div class="hp-field">
+            <label for="dFullDesc">Full Description</label>
+            <textarea id="dFullDesc" name="fullDesc" rows="4"></textarea>
+          </div>
+          <button type="submit" class="hp-btn hp-btn--teal">Save Changes</button>
+        </form>
+
+        <div class="hp-detail__actions">
+          <button type="button" class="hp-btn hp-btn--ghost" id="productDetailEdit">Edit</button>
+          <button type="button" class="hp-btn hp-btn--ghost" id="productDetailDelete">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= LIGHTBOX ================= -->
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
+      <button class="lightbox__btn lightbox__close" aria-label="Close viewer">&times;</button>
+      <button class="lightbox__btn lightbox__prev" aria-label="Previous photo">&#8249;</button>
+      <button class="lightbox__btn lightbox__next" aria-label="Next photo">&#8250;</button>
+      <figure class="lightbox__fig">
+        <img src="" alt="">
+        <figcaption class="lightbox__cap"></figcaption>
+      </figure>
+    </div>
+
+    <!-- ================= WHATSAPP FLOAT ================= -->
+    <a href="https://wa.me/923092190828" target="_blank" rel="noopener" class="wa-float" aria-label="Chat with us on WhatsApp">
+      <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.376 3 4 8.373 4 15c0 2.34.687 4.523 1.875 6.354L4 29l7.83-1.828A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3Zm6.63 16.94c-.28.79-1.633 1.51-2.246 1.6-.575.086-1.302.122-2.1-.132-.484-.156-1.107-.363-1.906-.71-3.354-1.447-5.542-4.804-5.71-5.028-.168-.223-1.372-1.824-1.372-3.479 0-1.655.868-2.47 1.176-2.807.308-.336.672-.42.897-.42.224 0 .448.002.644.012.207.01.485-.078.758.578.28.672.952 2.324 1.036 2.492.084.168.14.365.028.586-.113.223-.169.363-.337.56-.168.196-.353.437-.505.588-.168.168-.343.35-.148.687.196.336.868 1.436 1.865 2.325 1.28 1.144 2.36 1.5 2.7 1.667.34.168.54.14.74-.084.196-.224.84-.98 1.064-1.316.224-.336.448-.28.756-.168.308.112 1.96.925 2.296 1.093.336.168.56.252.644.392.084.14.084.812-.196 1.602Z"/></svg>
+    </a>
+
+    <script src="js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
