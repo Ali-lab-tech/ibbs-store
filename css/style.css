@@ -7,6 +7,7 @@ html:not(.js) .reveal,html:not(.js) [class*="reveal"]{opacity:1!important;transf
    Palette: charcoal base + warm amber + bright teal punch.
    ========================================================================== */
 
+   
 :root {
   /* Core palette */
   --ink:        #14110f;   /* near-black charcoal base */
