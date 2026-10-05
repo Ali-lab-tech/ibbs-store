@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" fill="none">
+  <defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#B9A77E" stroke-opacity=".1"/></pattern><linearGradient id="pump" x1="120" y1="160" x2="354" y2="344"><stop stop-color="#68746D"/><stop offset="1" stop-color="#26312B"/></linearGradient></defs>
+  <rect width="480" height="480" fill="#171613"/><rect width="480" height="480" fill="url(#grid)"/>
+  <circle cx="242" cy="246" r="165" fill="#F0A92C" fill-opacity=".045"/>
+  <path d="M75 341h330" stroke="#D5A54B" stroke-opacity=".55" stroke-width="4"/>
+  <rect x="110" y="306" width="260" height="42" rx="9" fill="#354139" stroke="#88948C" stroke-width="4"/>
+  <circle cx="230" cy="244" r="92" fill="url(#pump)" stroke="#A1ACA4" stroke-width="5"/>
+  <path d="M225 151v-42h105v83h-40" stroke="#8F9B92" stroke-width="11" stroke-linejoin="round"/>
+  <path d="M224 337v-44m-85 44v-30m183 30v-30" stroke="#929E95" stroke-width="8" stroke-linecap="round"/>
+  <path d="M163 235c0-43 30-72 68-72 40 0 67 29 67 69 0 40-28 70-69 70h-66Z" fill="#1A2420" stroke="#17C0A8" stroke-width="5"/>
+  <path d="M230 195c22 0 39 18 39 40 0 22-17 39-39 39-21 0-38-17-38-39 0-22 17-40 38-40Z" stroke="#F0A92C" stroke-width="7"/>
+  <path d="M82 191h62m194 0h60" stroke="#17C0A8" stroke-opacity=".55" stroke-width="4"/>
+</svg>

@@ -896,6 +896,8 @@ body:not(.is-admin) .hp-detail__actions {
 .product-card__foot { display: flex; align-items: center; justify-content: space-between; gap: .8rem; }
 .price { font-family: var(--ff-display); font-size: 1.5rem; color: var(--amber); }
 .price small { font-family: var(--ff-body); font-size: .7rem; color: var(--smoke); letter-spacing: .06em; }
+#shop .product-card__foot .price { font-size: 1rem; line-height: 1.2; }
+#shop .product-card__foot .hp-btn { padding: .7rem .8rem; font-size: .66rem; white-space: nowrap; }
 
 .growler-cta {
   margin-top: 2.6rem;
@@ -1044,7 +1046,7 @@ body:not(.is-admin) .hp-detail__actions {
 .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 2.4rem; }
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
 @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
-.footer-brand { font-family: var(--ff-display); font-size: 2.2rem; line-height: 1; color: var(--bone); text-transform: uppercase; }
+.footer-brand { font-family: var(--ff-display); font-size: 2.2rem; line-height: 1; color: var(--bone); text-transform: uppercase; margin-bottom: .55rem; }
 .footer-brand .dot { color: var(--teal); }
 .hp-footer p { color: var(--smoke); font-size: .92rem; }
 .footer-col h5 { font-size: 1rem; letter-spacing: .1em; margin-bottom: 1.1rem; color: var(--bone); }
@@ -1052,7 +1054,7 @@ body:not(.is-admin) .hp-detail__actions {
 .footer-col li { margin-bottom: .6rem; }
 .footer-col a { color: var(--bone-dim); font-size: .92rem; }
 .footer-col a:hover { color: var(--amber); }
-.social-row { display: flex; gap: .6rem; margin-top: 1.2rem; }
+.social-row { display: flex; gap: .6rem; margin-top: 1.6rem; }
 .social-row a {
   width: 40px; height: 40px;
   border: 1px solid var(--ink-line);

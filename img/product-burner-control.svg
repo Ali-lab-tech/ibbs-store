@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" fill="none">
+  <defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#B9A77E" stroke-opacity=".1"/></pattern><linearGradient id="body" x1="120" y1="100" x2="360" y2="390"><stop stop-color="#48554E"/><stop offset="1" stop-color="#1C2621"/></linearGradient></defs>
+  <rect width="480" height="480" fill="#171613"/><rect width="480" height="480" fill="url(#grid)"/>
+  <circle cx="240" cy="220" r="158" fill="#F0A92C" fill-opacity=".05"/>
+  <path d="M78 375H402" stroke="#D5A54B" stroke-opacity=".5" stroke-width="3"/>
+  <rect x="111" y="130" width="258" height="220" rx="18" fill="url(#body)" stroke="#7D8981" stroke-width="4"/>
+  <rect x="139" y="157" width="202" height="90" rx="8" fill="#111A16" stroke="#17C0A8" stroke-width="4"/>
+  <path d="M166 216c21-53 44-53 66 0s44 53 66 0" stroke="#F0A92C" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="160" cy="289" r="13" fill="#17C0A8"/><circle cx="205" cy="289" r="13" fill="#F0A92C"/><circle cx="250" cy="289" r="13" fill="#B94E3C"/>
+  <path d="M288 279h52M288 300h52M145 374v-24m190 24v-24" stroke="#8D9A91" stroke-width="7" stroke-linecap="round"/>
+  <path d="M83 105h82m-82 18h45m187 244h82" stroke="#17C0A8" stroke-opacity=".55" stroke-width="3"/>
+</svg>

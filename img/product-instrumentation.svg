@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" fill="none">
+  <defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#B9A77E" stroke-opacity=".1"/></pattern><linearGradient id="gauge" x1="140" y1="94" x2="344" y2="332"><stop stop-color="#59645E"/><stop offset="1" stop-color="#232D28"/></linearGradient></defs>
+  <rect width="480" height="480" fill="#171613"/><rect width="480" height="480" fill="url(#grid)"/>
+  <circle cx="240" cy="213" r="166" fill="#F0A92C" fill-opacity=".045"/>
+  <circle cx="240" cy="205" r="116" fill="url(#gauge)" stroke="#A7B0AA" stroke-width="6"/>
+  <circle cx="240" cy="205" r="88" fill="#101714" stroke="#17C0A8" stroke-width="4"/>
+  <path d="M173 243a80 80 0 0 1 134-81M240 205l55-52" stroke="#F0A92C" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="240" cy="205" r="12" fill="#F0A92C"/>
+  <path d="M240 89v19m-82 18 14 14m136-14-14 14m-54 177v48m-55 0h110" stroke="#94A198" stroke-width="7" stroke-linecap="round"/>
+  <rect x="189" y="377" width="102" height="32" rx="8" fill="#344139" stroke="#87948B" stroke-width="3"/>
+  <path d="M84 408h82m148 0h82" stroke="#17C0A8" stroke-opacity=".55" stroke-width="3"/>
+</svg>
