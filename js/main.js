@@ -211,11 +211,69 @@
   /* ---------- Add Product (localStorage) ---------- */
   var PRODUCTS_KEY = "hops_custom_products";
 
+  function getDefaultProducts() {
+    return [
+      {
+        id: "p-default-boiler-1",
+        name: "Steam Boiler Feed Pump",
+        style: "Boiler Parts",
+        shortDesc: "High-efficiency pump built for continuous boiler feed service and steady pressure control.",
+        fullDesc: "Engineered to support boiler feed systems with reliable flow, low maintenance needs, and consistent pressure under continuous industrial operation.",
+        image: ""
+      },
+      {
+        id: "p-default-auto-1",
+        name: "PLC Control Module",
+        style: "Automation Products",
+        shortDesc: "Modular automation control unit for machine logic, fault handling, and process optimization.",
+        fullDesc: "This PLC-based control solution helps streamline industrial automation with rapid diagnostics, stable communication, and easy integration into existing plant systems.",
+        image: ""
+      },
+      {
+        id: "p-default-pump-1",
+        name: "Centrifugal Transfer Pump",
+        style: "Pumps",
+        shortDesc: "Durable transfer pump for fluids, wash-down systems, and plant circulation requirements.",
+        fullDesc: "Designed for long service life in industrial environments, this centrifugal pump delivers dependable transfer performance with efficient energy use and easy maintenance access.",
+        image: ""
+      },
+      {
+        id: "p-default-elec-1",
+        name: "Power Distribution Panel",
+        style: "Electrical Items",
+        shortDesc: "Safe and organized power distribution panel for factories, workshops, and industrial facilities.",
+        fullDesc: "Built for reliable distribution of power across critical equipment with protection, labeling, and load balancing for cleaner operations.",
+        image: ""
+      },
+      {
+        id: "p-default-inst-1",
+        name: "Digital Pressure Gauge",
+        style: "Instruments",
+        shortDesc: "High-accuracy gauge for pressure monitoring in process lines and mechanical systems.",
+        fullDesc: "A digital measurement solution that improves process visibility, helps prevent overloads, and supports accurate monitoring across industrial applications.",
+        image: ""
+      },
+      {
+        id: "p-default-valve-1",
+        name: "Industrial Gate Valve",
+        style: "Valves",
+        shortDesc: "Heavy-duty gate valve designed for shutoff control in demanding processing environments.",
+        fullDesc: "This valve delivers dependable on/off performance with a rugged body and reliable seal design suited to flow control in industrial systems.",
+        image: ""
+      }
+    ];
+  }
+
   function getStoredProducts() {
     try {
-      return JSON.parse(window.localStorage.getItem(PRODUCTS_KEY)) || [];
+      var stored = JSON.parse(window.localStorage.getItem(PRODUCTS_KEY));
+      if (Array.isArray(stored) && stored.length) {
+        return stored;
+      }
+      window.localStorage.setItem(PRODUCTS_KEY, JSON.stringify(getDefaultProducts()));
+      return getDefaultProducts();
     } catch (e) {
-      return [];
+      return getDefaultProducts();
     }
   }
 
@@ -584,6 +642,35 @@
     });
   }
 
+  /* ---------- Quote contact options ---------- */
+  function initQuoteOptions() {
+    var openBtn = document.getElementById("getQuoteBtn");
+    var modal = document.getElementById("quoteOptionsModal");
+    var closeBtn = document.getElementById("quoteOptionsClose");
+    if (!openBtn || !modal || !closeBtn) return;
+
+    var closeModal = function () {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      openBtn.focus();
+    };
+
+    openBtn.addEventListener("click", function () {
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    });
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+    });
+  }
+
   /* ---------- Highlight today's row in hours ---------- */
   function initTodayHours() {
     var rows = document.querySelectorAll("[data-day]");
@@ -615,6 +702,7 @@
     initBag();
     initLightbox();
     initNewsletter();
+    initQuoteOptions();
     initTodayHours();
   });
 })();
