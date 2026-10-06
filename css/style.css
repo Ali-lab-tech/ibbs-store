@@ -820,6 +820,9 @@ body:not(.is-admin) .hp-detail__actions {
   padding: 1.3rem;
   transition: border-color .2s ease, transform .2s ease;
 }
+.client-logo[hidden] { display: none !important; }
+.client-logo[role="button"] { cursor: pointer; }
+.client-logo[role="button"]:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
 .client-logo:hover { border-color: var(--amber); transform: translateY(-4px); }
 .client-logo__media {
   flex: 0 0 auto;
@@ -833,7 +836,15 @@ body:not(.is-admin) .hp-detail__actions {
   justify-content: center;
   color: var(--smoke);
 }
-.client-logo__media img { width: 100%; height: 100%; object-fit: contain; display: block; padding: .4rem; }
+.client-logo__media img {
+  width: 100%; height: 100%; object-fit: contain; display: block; padding: .4rem;
+  filter: grayscale(100%);
+  opacity: .6;
+  transition: filter .3s ease-in-out, opacity .3s ease-in-out, transform .3s ease-in-out;
+}
+.client-logo:hover .client-logo__media img,
+.client-logo:focus-visible .client-logo__media img,
+.client-logo.is-active .client-logo__media img { filter: grayscale(0%); opacity: 1; transform: scale(1.05); }
 .client-logo__media svg { width: 32px; height: 32px; }
 .client-logo__media--wordmark { background: #f4f1e8; padding: .25rem; text-align: center; }
 .client-logo__media--wordmark span { color: #20251f; font-size: .78rem; font-weight: 800; line-height: 1.05; }
@@ -852,6 +863,7 @@ body:not(.is-admin) .hp-detail__actions {
   margin-bottom: .3rem;
 }
 .client-logo__desc { font-size: .82rem; color: var(--smoke); margin: 0; line-height: 1.5; }
+.client-logos__actions { display: flex; justify-content: center; margin-top: 1.6rem; }
 
 .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
 .event-card {
@@ -1155,6 +1167,7 @@ body:not(.is-admin) .hp-detail__actions {
    ========================================================================== */
 .js .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
 .js .reveal.in { opacity: 1; transform: none; }
+.js .client-logo.reveal.in:hover { transform: translateY(-4px); }
 .js .reveal-d1 { transition-delay: .08s; }
 .js .reveal-d2 { transition-delay: .16s; }
 .js .reveal-d3 { transition-delay: .24s; }

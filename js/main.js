@@ -73,6 +73,53 @@
     els.forEach(function (el) { obs.observe(el); });
   }
 
+  /* ---------- Client logo grid ---------- */
+  function initClientLogos() {
+    var grid = document.getElementById("clientLogos");
+    var toggle = document.getElementById("clientLogosToggle");
+    if (!grid || !toggle) return;
+
+    var cards = Array.prototype.slice.call(grid.querySelectorAll(".client-logo"));
+    var expanded = false;
+    if (!cards.length) return;
+
+    var visibleCardCount = function () {
+      var columns = window.getComputedStyle(grid).gridTemplateColumns.trim().split(/\s+/).length;
+      return Math.min(cards.length, columns * 3);
+    };
+    var updateVisibility = function () {
+      var visibleCount = expanded ? cards.length : visibleCardCount();
+      cards.forEach(function (card, index) { card.hidden = index >= visibleCount; });
+      toggle.hidden = !expanded && visibleCount >= cards.length;
+      toggle.textContent = expanded ? "Show fewer clients" : "Show all clients";
+      toggle.setAttribute("aria-expanded", String(expanded));
+    };
+    var toggleCard = function (card) {
+      var active = card.classList.toggle("is-active");
+      card.setAttribute("aria-pressed", String(active));
+    };
+
+    cards.forEach(function (card) {
+      card.setAttribute("role", "button");
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("aria-pressed", "false");
+      card.addEventListener("click", function () { toggleCard(card); });
+      card.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          toggleCard(card);
+        }
+      });
+    });
+
+    toggle.addEventListener("click", function () {
+      expanded = !expanded;
+      updateVisibility();
+    });
+    window.addEventListener("resize", updateVisibility);
+    updateVisibility();
+  }
+
   /* ---------- Count-up stats ---------- */
   function initCountUp() {
     var nums = document.querySelectorAll("[data-count]");
@@ -757,6 +804,7 @@
     initStickyNav();
     initMobileNav();
     initScrollSpy();
+    initClientLogos();
     initReveal();
     initCountUp();
     initBeerFilter();
