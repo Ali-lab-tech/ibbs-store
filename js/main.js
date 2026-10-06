@@ -518,50 +518,113 @@
     });
   }
 
-  /* ---------- Shopping bag (merch) ---------- */
+  /* ---------- Industrial product quote shortlist ---------- */
   function initBag() {
-    var count = 0;
+    var products = [];
     var badge = document.querySelector(".hp-bag__count");
     var bagBtn = document.querySelector(".hp-bag");
     var addButtons = document.querySelectorAll("[data-add-bag]");
-    if (!addButtons.length) return;
+    var modal = document.getElementById("quoteListModal");
+    var closeBtn = document.getElementById("quoteListClose");
+    var list = document.getElementById("quoteListItems");
+    var empty = document.getElementById("quoteListEmpty");
+    var actions = document.getElementById("quoteListActions");
+    var whatsapp = document.getElementById("quoteListWhatsApp");
+    var email = document.getElementById("quoteListEmail");
+    var clearBtn = document.getElementById("quoteListClear");
+    if (!bagBtn || !modal || !closeBtn || !list || !empty || !actions || !whatsapp || !email || !clearBtn) return;
 
     var render = function () {
-      if (!badge) return;
-      badge.textContent = String(count);
-      badge.classList.toggle("show", count > 0);
-      if (bagBtn) bagBtn.setAttribute("aria-label", "Shopping bag, " + count + " item" + (count === 1 ? "" : "s"));
+      var count = products.length;
+      if (badge) {
+        badge.textContent = String(count);
+        badge.classList.toggle("show", count > 0);
+      }
+      bagBtn.setAttribute("aria-label", "Quote list, " + count + " item" + (count === 1 ? "" : "s"));
+      list.replaceChildren();
+      products.forEach(function (product, index) {
+        var item = document.createElement("li");
+        var name = document.createElement("span");
+        var remove = document.createElement("button");
+        name.textContent = product;
+        remove.type = "button";
+        remove.className = "quote-list__remove";
+        remove.textContent = "Remove";
+        remove.setAttribute("aria-label", "Remove " + product + " from quote list");
+        remove.setAttribute("data-remove-quote", String(index));
+        item.appendChild(name);
+        item.appendChild(remove);
+        list.appendChild(item);
+      });
+      empty.hidden = count > 0;
+      actions.hidden = count === 0;
+
+      if (count > 0) {
+        var message = "Hello, I would like a quotation for:\n" + products.map(function (product) {
+          return "- " + product;
+        }).join("\n");
+        whatsapp.href = "https://wa.me/923092190828?text=" + encodeURIComponent(message);
+        email.href = "https://mail.google.com/mail/?view=cm&fs=1&to=info.iibbs@gmail.com&su=" +
+          encodeURIComponent("Industrial Product Quote Request") + "&body=" + encodeURIComponent(message);
+      } else {
+        whatsapp.removeAttribute("href");
+        email.removeAttribute("href");
+      }
+      addButtons.forEach(function (btn) {
+        var nameEl = btn.closest(".product-card").querySelector("h4");
+        var selected = nameEl && products.indexOf(nameEl.textContent.trim()) !== -1;
+        btn.setAttribute("aria-pressed", selected ? "true" : "false");
+        btn.textContent = selected ? "Added to Quote" : "Add to Quote";
+      });
     };
 
     addButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        count++;
+        var card = btn.closest(".product-card");
+        var nameEl = card && card.querySelector("h4");
+        if (!nameEl) return;
+        var name = nameEl.textContent.trim();
+        var index = products.indexOf(name);
+        if (index === -1) products.push(name);
+        else products.splice(index, 1);
         render();
-        var original = btn.getAttribute("data-label") || btn.textContent;
-        btn.setAttribute("data-label", original);
-        btn.textContent = "Added ✓";
-        btn.disabled = true;
-        setTimeout(function () {
-          btn.textContent = original;
-          btn.disabled = false;
-        }, 1100);
       });
     });
 
-    if (bagBtn) {
-      bagBtn.addEventListener("click", function () {
-        if (count === 0) { flashBag("Your bag is empty — grab some merch!"); return; }
-        flashBag(count + " item" + (count === 1 ? "" : "s") + " in your bag. Checkout is a demo in this template.");
-      });
-    }
-    function flashBag(msg) {
-      var note = document.getElementById("bagNote");
-      if (!note) { window.alert(msg); return; }
-      note.textContent = msg;
-      note.hidden = false;
-      clearTimeout(note._t);
-      note._t = setTimeout(function () { note.hidden = true; }, 3200);
-    }
+    var lastFocus = null;
+    var closeModal = function () {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (lastFocus) lastFocus.focus();
+    };
+    bagBtn.addEventListener("click", function () {
+      lastFocus = document.activeElement;
+      render();
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    });
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) closeModal();
+    });
+    list.addEventListener("click", function (event) {
+      var remove = event.target.closest("[data-remove-quote]");
+      if (!remove) return;
+      var index = Number(remove.getAttribute("data-remove-quote"));
+      if (index < 0 || index >= products.length) return;
+      products.splice(index, 1);
+      render();
+    });
+    clearBtn.addEventListener("click", function () {
+      products = [];
+      render();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && modal.classList.contains("open")) closeModal();
+    });
     render();
   }
 

@@ -23,7 +23,7 @@
         <a class="navbar-brand" href="index.html" aria-label="IBBS home"><img src="img/ibbs-icon-mark.png" alt="" width="32" height="32" class="navbar-brand__icon">IBBS<span class="dot">.</span></a>
 
         <div class="d-flex align-items-center order-lg-3 nav-cta-wrap">
-          <button class="hp-bag" type="button" aria-label="Shopping bag, 0 items">
+          <button class="hp-bag" type="button" aria-label="Quote list, 0 items" aria-haspopup="dialog" aria-controls="quoteListModal">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             <span class="hp-bag__count" aria-hidden="true">0</span>
           </button>
@@ -189,8 +189,10 @@
         <!-- Story image and text columns share aligned dimensions
              T -->
         <div class="story-grid">
-          <div class="story-media">
-            <img src="img/industrial-services.svg" alt="Illustration of industrial boiler equipment, process pipes, and an automation control panel" width="720" height="820" loading="lazy">
+          <div class="story-media story-media--photo">
+            <!-- Replaced the story illustration with the provided industrial photo
+                 T -->
+            <img src="img/ibbs-story-photo.jpe" alt="Industrial technician using a control panel beside process equipment" width="1223" height="768" loading="lazy">
             <div class="stamp"><b>2012</b><span>Since</span></div>
           </div>
           <div class="story-copy">
@@ -317,7 +319,7 @@
             <div class="product-card__body">
               <h4>Burner Control Systems</h4>
               <p>Burner controls and flame-safeguard components to support safe, dependable boiler operation.</p>
-              <div class="product-card__foot"><span class="price">Quote on request</span><a href="#location" class="hp-btn hp-btn--teal hp-btn--sm">Get Quote</a></div>
+              <div class="product-card__foot"><span class="price">Quote on request</span><button type="button" class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag aria-pressed="false">Add to Quote</button></div>
             </div>
           </article>
           <article class="product-card reveal reveal-d1">
@@ -325,7 +327,7 @@
             <div class="product-card__body">
               <h4>Automation Control Panels</h4>
               <p>PLC-based panel design and integration for efficient industrial monitoring and control.</p>
-              <div class="product-card__foot"><span class="price">Quote on request</span><a href="#location" class="hp-btn hp-btn--teal hp-btn--sm">Get Quote</a></div>
+              <div class="product-card__foot"><span class="price">Quote on request</span><button type="button" class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag aria-pressed="false">Add to Quote</button></div>
             </div>
           </article>
           <article class="product-card reveal reveal-d2">
@@ -333,7 +335,7 @@
             <div class="product-card__body">
               <h4>Process Instrumentation</h4>
               <p>Pressure, temperature, and process instruments for accurate plant monitoring.</p>
-              <div class="product-card__foot"><span class="price">Quote on request</span><a href="#location" class="hp-btn hp-btn--teal hp-btn--sm">Get Quote</a></div>
+              <div class="product-card__foot"><span class="price">Quote on request</span><button type="button" class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag aria-pressed="false">Add to Quote</button></div>
             </div>
           </article>
           <article class="product-card reveal">
@@ -341,7 +343,7 @@
             <div class="product-card__body">
               <h4>Valves &amp; Actuators</h4>
               <p>Industrial flow-control valves and actuators for dependable process service.</p>
-              <div class="product-card__foot"><span class="price">Quote on request</span><a href="#location" class="hp-btn hp-btn--teal hp-btn--sm">Get Quote</a></div>
+              <div class="product-card__foot"><span class="price">Quote on request</span><button type="button" class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag aria-pressed="false">Add to Quote</button></div>
             </div>
           </article>
           <article class="product-card reveal reveal-d1">
@@ -349,7 +351,7 @@
             <div class="product-card__body">
               <h4>Industrial Pumps</h4>
               <p>Robust pumping equipment and support for boiler and general plant applications.</p>
-              <div class="product-card__foot"><span class="price">Quote on request</span><a href="#location" class="hp-btn hp-btn--teal hp-btn--sm">Get Quote</a></div>
+              <div class="product-card__foot"><span class="price">Quote on request</span><button type="button" class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag aria-pressed="false">Add to Quote</button></div>
             </div>
           </article>
           <article class="product-card reveal reveal-d2">
@@ -357,7 +359,7 @@
             <div class="product-card__body">
               <h4>Flow Measurement</h4>
               <p>Flow meters and sensing solutions to improve process visibility and control.</p>
-              <div class="product-card__foot"><span class="price">Quote on request</span><a href="#location" class="hp-btn hp-btn--teal hp-btn--sm">Get Quote</a></div>
+              <div class="product-card__foot"><span class="price">Quote on request</span><button type="button" class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag aria-pressed="false">Add to Quote</button></div>
             </div>
           </article>
           <article class="product-card reveal">
@@ -365,7 +367,7 @@
             <div class="product-card__body">
               <h4>Water Treatment Solutions</h4>
               <p>Water-treatment equipment and components to help protect boilers and plant systems.</p>
-              <div class="product-card__foot"><span class="price">Quote on request</span><a href="#location" class="hp-btn hp-btn--teal hp-btn--sm">Get Quote</a></div>
+              <div class="product-card__foot"><span class="price">Quote on request</span><button type="button" class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag aria-pressed="false">Add to Quote</button></div>
             </div>
           </article>
           <article class="product-card reveal reveal-d1">
@@ -373,7 +375,7 @@
             <div class="product-card__body">
               <h4>Industrial Spare Parts</h4>
               <p>Reliable sourcing of electrical, mechanical, and burner replacement components.</p>
-              <div class="product-card__foot"><span class="price">Quote on request</span><a href="#location" class="hp-btn hp-btn--teal hp-btn--sm">Get Quote</a></div>
+              <div class="product-card__foot"><span class="price">Quote on request</span><button type="button" class="hp-btn hp-btn--teal hp-btn--sm" data-add-bag aria-pressed="false">Add to Quote</button></div>
             </div>
           </article>
         </div>
@@ -621,6 +623,22 @@
         <div class="hp-detail__actions">
           <button type="button" class="hp-btn hp-btn--ghost" id="productDetailEdit">Edit</button>
           <button type="button" class="hp-btn hp-btn--ghost" id="productDetailDelete">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= INDUSTRIAL QUOTE SHORTLIST ================= -->
+    <div class="hp-modal" id="quoteListModal" role="dialog" aria-modal="true" aria-labelledby="quoteListTitle" aria-hidden="true">
+      <div class="hp-modal__panel">
+        <button type="button" class="hp-modal__close" id="quoteListClose" aria-label="Close quote list">&times;</button>
+        <h3 id="quoteListTitle">Your Quote List</h3>
+        <p class="lead-muted">Select the industrial products you want a quotation for.</p>
+        <p id="quoteListEmpty" class="quote-list__empty">Your quote list is empty. Add products from Industrial Essentials.</p>
+        <ul id="quoteListItems" class="quote-list__items" aria-live="polite"></ul>
+        <div id="quoteListActions" class="quote-options" hidden>
+          <a class="hp-btn hp-btn--teal" id="quoteListWhatsApp" href="#" target="_blank" rel="noopener">Send via WhatsApp</a>
+          <a class="hp-btn hp-btn--ghost" id="quoteListEmail" href="#" target="_blank" rel="noopener">Send via Email</a>
+          <button type="button" class="hp-btn hp-btn--ghost" id="quoteListClear">Clear list</button>
         </div>
       </div>
     </div>
