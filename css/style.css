@@ -294,7 +294,7 @@ img { max-width: 100%; height: auto; display: block; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 8rem 0 5rem;
+  padding: 6rem 0 6rem;
   background: linear-gradient(180deg, rgba(20,17,15,.7) 0%, rgba(20,17,15,.82) 55%, var(--ink) 100%),
               #0f0d0b;
   overflow: hidden;
