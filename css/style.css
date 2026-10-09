@@ -671,8 +671,9 @@ body:not(.is-admin) .hp-detail__actions {
    ========================================================================== */
 /* Align office hours with services and space out the daily rows
    T */
-.taproom-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 3rem; align-items: stretch; }
-@media (max-width: 900px) { .taproom-grid { grid-template-columns: 1fr; gap: 2.2rem; } }
+.taproom-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 3rem; align-items: stretch; }
+.taproom-grid > * { min-width: 0; }
+@media (max-width: 900px) { .taproom-grid { grid-template-columns: minmax(0, 1fr); gap: 2.2rem; } }
 
 .hours-card {
   height: 100%;
@@ -685,7 +686,9 @@ body:not(.is-admin) .hp-detail__actions {
 .hours-card h3 { font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: .6rem; }
 .hours-row {
   display: flex;
+  min-width: 0;
   justify-content: space-between;
+  gap: .5rem 1rem;
   padding: 1.1rem 0;
   border-bottom: 1px solid var(--ink-line);
   font-size: .96rem;
@@ -693,6 +696,7 @@ body:not(.is-admin) .hp-detail__actions {
 .hours-row:last-child { border-bottom: none; }
 .hours-row.is-today { color: var(--amber); font-weight: 700; }
 .hours-row .day { letter-spacing: .04em; }
+.hours-row > :last-child { text-align: right; }
 .hours-row .closed { color: var(--smoke); }
 .today-flag {
   font-size: .6rem;
@@ -723,6 +727,7 @@ body:not(.is-admin) .hp-detail__actions {
 .expect-list p { margin: 0; color: var(--smoke); font-size: .9rem; }
 
 .badge-row { display: flex; flex-wrap: nowrap; justify-content: space-between; gap: .5rem; margin-top: 1.6rem; }
+@media (max-width: 520px) { .badge-row { flex-wrap: wrap; justify-content: flex-start; } }
 .hp-badge {
   display: inline-flex; align-items: center; gap: .45rem;
   font-size: .68rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
