@@ -182,168 +182,7 @@
     });
   }
 
-  /* ---------- Admin gate (client-side only, deters casual editing) ---------- */
-  var ADMIN_PIN = "1234";
-  var ADMIN_SESSION_KEY = "hops_admin_unlocked";
-
-  function isAdmin() {
-    try {
-      return window.sessionStorage.getItem(ADMIN_SESSION_KEY) === "1";
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function initAdminGate() {
-    var toggleBtn = document.getElementById("adminToggleBtn");
-    var modal = document.getElementById("adminModal");
-    var closeBtn = document.getElementById("adminModalClose");
-    var form = document.getElementById("adminForm");
-    var pinInput = document.getElementById("adminPin");
-    var errorMsg = document.getElementById("adminError");
-    if (!toggleBtn || !modal || !form) return;
-
-    var refreshUI = function () {
-      var admin = isAdmin();
-      document.body.classList.toggle("is-admin", admin);
-      toggleBtn.textContent = admin ? "Exit Admin" : "Admin";
-      toggleBtn.classList.toggle("is-active", admin);
-    };
-
-    var openModal = function () {
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-      errorMsg.hidden = true;
-      form.reset();
-      pinInput.focus();
-    };
-    var closeModal = function () {
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      toggleBtn.focus();
-    };
-
-    toggleBtn.addEventListener("click", function () {
-      if (isAdmin()) {
-        try { window.sessionStorage.removeItem(ADMIN_SESSION_KEY); } catch (e) {}
-        refreshUI();
-      } else {
-        openModal();
-      }
-    });
-    closeBtn.addEventListener("click", closeModal);
-    modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
-    });
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (pinInput.value === ADMIN_PIN) {
-        try { window.sessionStorage.setItem(ADMIN_SESSION_KEY, "1"); } catch (e) {}
-        refreshUI();
-        closeModal();
-      } else {
-        errorMsg.hidden = false;
-        pinInput.value = "";
-        pinInput.focus();
-      }
-    });
-
-    refreshUI();
-  }
-
-  /* ---------- Add Product (localStorage) ---------- */
-  var PRODUCTS_KEY = "hops_custom_products";
-
-  function getDefaultProducts() {
-    return [
-      {
-        id: "p-default-boiler-1",
-        name: "Steam Boiler Feed Pump",
-        style: "Boiler Parts",
-        shortDesc: "High-efficiency pump built for continuous boiler feed service and steady pressure control.",
-        fullDesc: "Engineered to support boiler feed systems with reliable flow, low maintenance needs, and consistent pressure under continuous industrial operation.",
-        image: ""
-      },
-      {
-        id: "p-default-auto-1",
-        name: "PLC Control Module",
-        style: "Automation Products",
-        shortDesc: "Modular automation control unit for machine logic, fault handling, and process optimization.",
-        fullDesc: "This PLC-based control solution helps streamline industrial automation with rapid diagnostics, stable communication, and easy integration into existing plant systems.",
-        image: ""
-      },
-      {
-        id: "p-default-pump-1",
-        name: "Centrifugal Transfer Pump",
-        style: "Pumps",
-        shortDesc: "Durable transfer pump for fluids, wash-down systems, and plant circulation requirements.",
-        fullDesc: "Designed for long service life in industrial environments, this centrifugal pump delivers dependable transfer performance with efficient energy use and easy maintenance access.",
-        image: ""
-      },
-      {
-        id: "p-default-elec-1",
-        name: "Power Distribution Panel",
-        style: "Electrical Items",
-        shortDesc: "Safe and organized power distribution panel for factories, workshops, and industrial facilities.",
-        fullDesc: "Built for reliable distribution of power across critical equipment with protection, labeling, and load balancing for cleaner operations.",
-        image: ""
-      },
-      {
-        id: "p-default-inst-1",
-        name: "Digital Pressure Gauge",
-        style: "Instruments",
-        shortDesc: "High-accuracy gauge for pressure monitoring in process lines and mechanical systems.",
-        fullDesc: "A digital measurement solution that improves process visibility, helps prevent overloads, and supports accurate monitoring across industrial applications.",
-        image: ""
-      },
-      {
-        id: "p-default-valve-1",
-        name: "Industrial Gate Valve",
-        style: "Valves",
-        shortDesc: "Heavy-duty gate valve designed for shutoff control in demanding processing environments.",
-        fullDesc: "This valve delivers dependable on/off performance with a rugged body and reliable seal design suited to flow control in industrial systems.",
-        image: ""
-      }
-    ];
-  }
-
-  function getStoredProducts() {
-    try {
-      var stored = JSON.parse(window.localStorage.getItem(PRODUCTS_KEY));
-      if (Array.isArray(stored) && stored.length) {
-        return stored;
-      }
-      window.localStorage.setItem(PRODUCTS_KEY, JSON.stringify(getDefaultProducts()));
-      return getDefaultProducts();
-    } catch (e) {
-      return getDefaultProducts();
-    }
-  }
-
-  function saveStoredProducts(products) {
-    try {
-      window.localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
-    } catch (e) {}
-  }
-
-  function escapeHtml(str) {
-    var div = document.createElement("div");
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  function readImageFile(file) {
-    return new Promise(function (resolve) {
-      var reader = new FileReader();
-      reader.onload = function () { resolve(reader.result); };
-      reader.readAsDataURL(file);
-    });
-  }
-
+  /* ---------- Published product catalog ---------- */
   function buildBeerCard(product) {
     var article = document.createElement("article");
     article.className = "beer-card beer-card--custom";
@@ -351,218 +190,113 @@
     article.setAttribute("data-id", product.id);
     article.setAttribute("tabindex", "0");
     article.setAttribute("role", "button");
-    var thumb = product.image
-      ? '<div class="beer-card__thumb"><img src="' + product.image + '" alt=""></div>'
-      : '';
-    article.innerHTML =
-      thumb +
-      '<div class="beer-card__body">' +
-        '<div class="beer-card__top"><h3>' + escapeHtml(product.name) + '</h3><span class="style-chip" data-s="' + escapeHtml(product.style) + '">' + escapeHtml(product.style) + '</span></div>' +
-        '<p class="beer-notes">' + escapeHtml(product.shortDesc) + '</p>' +
-      '</div>';
+
+    if (product.image) {
+      var thumb = document.createElement("div");
+      var image = document.createElement("img");
+      thumb.className = "beer-card__thumb";
+      image.src = product.image;
+      image.alt = product.name;
+      image.loading = "lazy";
+      thumb.appendChild(image);
+      article.appendChild(thumb);
+    }
+
+    var body = document.createElement("div");
+    var top = document.createElement("div");
+    var name = document.createElement("h3");
+    var category = document.createElement("span");
+    var description = document.createElement("p");
+    body.className = "beer-card__body";
+    top.className = "beer-card__top";
+    name.textContent = product.name;
+    category.className = "style-chip";
+    category.setAttribute("data-s", product.style);
+    category.textContent = product.style;
+    description.className = "beer-notes";
+    description.textContent = product.shortDesc;
+    top.appendChild(name);
+    top.appendChild(category);
+    body.appendChild(top);
+    body.appendChild(description);
+    article.appendChild(body);
     return article;
   }
 
-  function initProductManager() {
+  function initProductCatalog() {
     var grid = document.querySelector(".beer-grid");
-    var modal = document.getElementById("productModal");
-    var openBtn = document.getElementById("addProductBtn");
-    var closeBtn = document.getElementById("productModalClose");
-    var form = document.getElementById("productForm");
-    if (!grid || !modal || !openBtn || !form) return;
+    var empty = document.querySelector(".no-results");
+    var modal = document.getElementById("productDetailModal");
+    var closeBtn = document.getElementById("productDetailClose");
+    var image = document.getElementById("dImagePreview");
+    var title = document.getElementById("productDetailTitle");
+    var category = document.getElementById("dViewStyle");
+    var description = document.getElementById("dViewFullDesc");
+    if (!grid || !empty || !modal || !closeBtn || !image || !title || !category || !description) return;
 
-    var openModal = function () {
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-      var first = form.querySelector("input, select, textarea");
-      if (first) first.focus();
-    };
+    var products = window.IBBS_PRODUCTS;
+    if (!Array.isArray(products)) {
+      console.error("IBBS product catalog is missing or invalid.");
+      empty.textContent = "Product listings could not be loaded. Please contact IBBS.";
+      empty.classList.add("show");
+      return;
+    }
+
+    var lastFocus = null;
     var closeModal = function () {
       modal.classList.remove("open");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
-      openBtn.focus();
+      if (lastFocus) lastFocus.focus();
     };
-
-    openBtn.addEventListener("click", openModal);
-    closeBtn.addEventListener("click", closeModal);
-    modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
-    });
-
-    var imageInput = document.getElementById("pImage");
-    var imagePreview = document.getElementById("pImagePreview");
-    if (imageInput && imagePreview) {
-      imageInput.addEventListener("change", function () {
-        var file = imageInput.files && imageInput.files[0];
-        if (!file) { imagePreview.hidden = true; imagePreview.src = ""; return; }
-        readImageFile(file).then(function (dataUrl) {
-          imagePreview.src = dataUrl;
-          imagePreview.hidden = false;
-        });
-      });
-    }
-
-    /* ---------- detail / edit modal ---------- */
-    var detailModal = document.getElementById("productDetailModal");
-    var detailClose = document.getElementById("productDetailClose");
-    var detailForm = document.getElementById("productDetailForm");
-    var detailEditBtn = document.getElementById("productDetailEdit");
-    var detailDeleteBtn = document.getElementById("productDetailDelete");
-    var dImagePreview = document.getElementById("dImagePreview");
-    var dViewName = document.getElementById("productDetailTitle");
-    var dViewStyle = document.getElementById("dViewStyle");
-    var dViewFullDesc = document.getElementById("dViewFullDesc");
-    var dImageInput = document.getElementById("dImage");
-    var activeProductId = null;
-
-    var setDetailViewMode = function (isEditing) {
-      detailForm.hidden = isEditing ? false : true;
-      dViewName.hidden = isEditing;
-      dViewStyle.hidden = isEditing;
-      dViewFullDesc.hidden = isEditing;
-      detailEditBtn.hidden = isEditing;
-    };
-
-    var populateDetail = function (product) {
-      activeProductId = product.id;
-      if (product.image) {
-        dImagePreview.src = product.image;
-        dImagePreview.hidden = false;
-      } else {
-        dImagePreview.hidden = true;
-        dImagePreview.src = "";
-      }
-      dViewName.textContent = product.name;
-      dViewStyle.textContent = product.style;
-      dViewStyle.setAttribute("data-s", product.style);
-      dViewFullDesc.textContent = product.fullDesc || product.shortDesc;
-      document.getElementById("dName").value = product.name;
-      document.getElementById("dStyle").value = product.style;
-      document.getElementById("dShortDesc").value = product.shortDesc;
-      document.getElementById("dFullDesc").value = product.fullDesc || "";
-      dImageInput.value = "";
-      setDetailViewMode(false);
-    };
-
-    var openDetailModal = function (product) {
-      populateDetail(product);
-      detailModal.classList.add("open");
-      detailModal.setAttribute("aria-hidden", "false");
+    var openDetail = function (product, card) {
+      lastFocus = card;
+      image.src = product.image || "";
+      image.alt = product.image ? product.name : "";
+      image.hidden = !product.image;
+      title.textContent = product.name;
+      category.textContent = product.style;
+      category.setAttribute("data-s", product.style);
+      description.textContent = product.fullDesc || product.shortDesc;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
+      closeBtn.focus();
     };
-    var closeDetailModal = function () {
-      detailModal.classList.remove("open");
-      detailModal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      activeProductId = null;
+    var visibleCount = function () {
+      return grid.querySelectorAll(".beer-card:not(.is-hidden)").length;
     };
 
-    detailClose.addEventListener("click", closeDetailModal);
-    detailModal.addEventListener("click", function (e) { if (e.target === detailModal) closeDetailModal(); });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && detailModal.classList.contains("open")) closeDetailModal();
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) closeModal();
     });
-    detailEditBtn.addEventListener("click", function () { setDetailViewMode(true); });
-
-    detailDeleteBtn.addEventListener("click", function () {
-      if (!activeProductId) return;
-      var card = grid.querySelector('.beer-card[data-id="' + activeProductId + '"]');
-      if (card) card.remove();
-      var products = getStoredProducts().filter(function (p) { return p.id !== activeProductId; });
-      saveStoredProducts(products);
-      closeDetailModal();
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && modal.classList.contains("open")) closeModal();
     });
 
-    detailForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (!activeProductId) return;
-      var products = getStoredProducts();
-      var product = products.filter(function (p) { return p.id === activeProductId; })[0];
-      if (!product) return;
-
-      var applyEdits = function (imageDataUrl) {
-        product.name = (document.getElementById("dName").value || "").trim();
-        product.style = document.getElementById("dStyle").value;
-        product.shortDesc = (document.getElementById("dShortDesc").value || "").trim();
-        product.fullDesc = (document.getElementById("dFullDesc").value || "").trim();
-        if (imageDataUrl) product.image = imageDataUrl;
-        if (!product.name || !product.shortDesc) return;
-
-        saveStoredProducts(products);
-        var oldCard = grid.querySelector('.beer-card[data-id="' + activeProductId + '"]');
-        var newCard = buildBeerCard(product);
-        wireCard(newCard, product);
-        if (oldCard) oldCard.replaceWith(newCard);
-        populateDetail(product);
-      };
-
-      var file = dImageInput.files && dImageInput.files[0];
-      if (file) {
-        readImageFile(file).then(applyEdits);
-      } else {
-        applyEdits(null);
+    products.forEach(function (product, index) {
+      if (!product || typeof product.id !== "string" || !product.id ||
+          typeof product.name !== "string" || !product.name ||
+          typeof product.style !== "string" || !product.style ||
+          typeof product.shortDesc !== "string" || !product.shortDesc ||
+          (product.image !== undefined && typeof product.image !== "string")) {
+        console.error("Invalid IBBS product catalog entry at index " + index + ".");
+        return;
       }
-    });
-
-    var wireCard = function (card, product) {
-      card.addEventListener("click", function () { openDetailModal(product); });
-      card.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetailModal(product); }
-      });
-    };
-
-    var addCardToGrid = function (product) {
       var card = buildBeerCard(product);
+      var openCard = function () { openDetail(product, card); };
+      card.addEventListener("click", openCard);
+      card.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openCard();
+        }
+      });
       grid.appendChild(card);
-      var emptyMsg = document.querySelector(".no-results");
-      var activeFilter = document.querySelector(".filter-btn.is-active");
-      var filterVal = activeFilter ? activeFilter.getAttribute("data-filter") : "all";
-      if (filterVal !== "all" && product.style !== filterVal) {
-        card.classList.add("is-hidden");
-      } else if (emptyMsg) {
-        emptyMsg.classList.remove("show");
-      }
-      wireCard(card, product);
-    };
-
-    getStoredProducts().forEach(addCardToGrid);
-
-    var finishSubmit = function (product) {
-      if (!product.name || !product.shortDesc) return;
-      var products = getStoredProducts();
-      products.push(product);
-      saveStoredProducts(products);
-      addCardToGrid(product);
-
-      form.reset();
-      if (imagePreview) { imagePreview.hidden = true; imagePreview.src = ""; }
-      closeModal();
-    };
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var product = {
-        id: "p" + Date.now() + Math.random().toString(16).slice(2),
-        name: (document.getElementById("pName").value || "").trim(),
-        style: document.getElementById("pStyle").value,
-        shortDesc: (document.getElementById("pShortDesc").value || "").trim(),
-        fullDesc: (document.getElementById("pFullDesc").value || "").trim(),
-        image: ""
-      };
-
-      var file = imageInput && imageInput.files && imageInput.files[0];
-      if (file) {
-        readImageFile(file).then(function (dataUrl) {
-          product.image = dataUrl;
-          finishSubmit(product);
-        });
-      } else {
-        finishSubmit(product);
-      }
     });
+
+    if (visibleCount() === 0) empty.classList.add("show");
   }
 
   /* ---------- Industrial product quote shortlist ---------- */
@@ -808,8 +542,7 @@
     initReveal();
     initCountUp();
     initBeerFilter();
-    initAdminGate();
-    initProductManager();
+    initProductCatalog();
     initBag();
     initLightbox();
     initNewsletter();

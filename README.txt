@@ -1,9 +1,32 @@
-HOPS — Craft Brewery & Taproom Website Template
+IBBS Store Website
+==================
 
-Hops is a bold, industrial-styled website template for craft breweries, taprooms and
-brewpubs. It ships as two pages — a one-page home and a full tap list with kitchen menu —
-featuring a filterable on-tap beer grid, live taproom hours, a dated events strip, a merch
-shop with an add-to-bag counter, a photo-gallery lightbox, and a newsletter sign-up. Built
-on Bootstrap 5 (self-hosted, no CDN) with 100% vanilla JavaScript and absolutely no jQuery,
-it is fully responsive, accessible and progressively enhanced. Free for personal and
-commercial use — swap the images, colours and copy and launch your own brewery site.
+Static HTML, CSS, and vanilla JavaScript site for Industrial Boiler & Burner Services.
+
+Shared product catalog
+----------------------
+Published product listings are stored in js/products.js, so every visitor sees the
+same catalog. Add entries to window.IBBS_PRODUCTS using this shape:
+
+  window.IBBS_PRODUCTS = [
+    {
+      id: "unique-product-id",
+      name: "Verified product name",
+      style: "Boiler Parts",
+      shortDesc: "Original, verified summary shown on the product card.",
+      fullDesc: "Original description using confirmed product information.",
+      image: "img/approved-product-photo.jpg"
+    }
+  ];
+
+Supported categories are Boiler Parts, Automation Products, Pumps, Electrical Items,
+Instruments, and Valves. The fullDesc and image fields are optional. Product photos
+must be IBBS-owned or used with permission.
+Do not copy supplier descriptions or make unverified specifications or compatibility
+claims.
+
+To publish catalog changes, commit and push them to the dev branch, then run this in
+cPanel Terminal:
+
+  cd ~/public_html
+  git pull origin dev

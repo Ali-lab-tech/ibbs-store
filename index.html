@@ -122,7 +122,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css?v=20261009-1">
+    <link rel="stylesheet" href="css/style.css?v=20261010-1">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -167,8 +167,8 @@
       </div>
       <div class="hp-hero__glow" aria-hidden="true"></div>
       <div class="container">
-        <div class="row">
-          <div class="col-lg-10">
+        <div class="row hp-hero__layout align-items-center">
+          <div class="col-lg-8 hp-hero__copy">
             <span class="hp-hero__kicker"><span class="pip"></span>Lahore-Based &middot; Serving Pakistan and International Markets Since 2012</span>
             <h1>Industrial Parts, Instruments &amp; <em>Boiler Services</em></h1>
             <p class="hp-hero__sub">IBBS supplies general industrial parts and process instruments, and provides coal-fired boiler, burner, PLC, and automation services in Pakistan and international markets including Saudi Arabia, Dubai in the UAE, and Bangladesh.</p>
@@ -176,24 +176,24 @@
               <a href="#ontap" class="hp-btn hp-btn--amber">Explore Industrial Products</a>
               <a href="#location" class="hp-btn hp-btn--ghost">Contact Us</a>
             </div>
-            <!-- <div class="hp-hero__stats">
-              <div class="hp-stat">
-                <div class="hp-stat__num"><span data-count="16">16</span></div>
-                <div class="hp-stat__label">Taps Flowing</div>
+          </div>
+          <div class="col-lg-4 hp-hero__feature-wrap">
+            <aside class="hp-hero__feature" aria-label="IBBS industrial support overview">
+              <div class="hp-hero__feature-head">
+                <span class="hp-hero__feature-icon" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 26V12l10-6 10 6v14M10 26v-8h12v8M12 13h.01M20 13h.01M16 13h.01M4 26h24"/></svg>
+                </span>
+                <span class="hp-hero__feature-label">Industrial support</span>
               </div>
-              <div class="hp-stat">
-                <div class="hp-stat__num"><span data-count="42">42</span></div>
-                <div class="hp-stat__label">Recipes Talha</div>
-              </div>
-              <div class="hp-stat">
-                <div class="hp-stat__num"><span data-count="7">7</span><span class="u">×</span></div>
-                <div class="hp-stat__label">Medals Wonsssss</div>
-              </div>
-              <div class="hp-stat">
-                <div class="hp-stat__num">100<span class="u">%</span></div>
-                <div class="hp-stat__label">Brewed On-Site</div>
-              </div>
-            </div> -->
+              <h2>Parts. Service. Support.</h2>
+              <p>Practical sourcing and engineering support for essential industrial operations.</p>
+              <ul class="hp-hero__feature-list">
+                <li><span>01</span>Industrial parts &amp; instruments</li>
+                <li><span>02</span>Boiler, burner &amp; automation services</li>
+                <li><span>03</span>Pakistan and international markets</li>
+              </ul>
+              <a class="hp-hero__feature-link" href="#taproom">Explore our capabilities <span aria-hidden="true">&rarr;</span></a>
+            </aside>
           </div>
         </div>
       </div>
@@ -213,10 +213,6 @@
                  T -->
             <p class="lead-muted">General industrial parts, boiler components, process instruments, automation products, and plant spare parts supplied in Pakistan and international markets.</p>
           </div>
-          <div class="tap-head__actions reveal">
-            <button type="button" id="adminToggleBtn" class="hp-btn hp-btn--ghost hp-btn--sm">Admin</button>
-            <button type="button" id="addProductBtn" class="hp-btn hp-btn--amber">+ Add Product</button>
-          </div>
         </div>
 
         <div class="filter-bar reveal" role="group" aria-label="Filter products by category">
@@ -230,7 +226,7 @@
         </div>
 
         <div class="beer-grid"></div>
-        <p class="no-results" role="status">No products in that category right now.</p>
+        <p class="no-results" role="status">No published product listings are available yet. Contact IBBS to ask about a specific part.</p>
       </div>
     </section>
 
@@ -643,62 +639,7 @@
       </div>
     </footer>
 
-    <!-- ================= ADMIN PIN MODAL ================= -->
-    <div class="hp-modal" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle" aria-hidden="true">
-      <div class="hp-modal__panel">
-        <button type="button" class="hp-modal__close" id="adminModalClose" aria-label="Close">&times;</button>
-        <h3 id="adminModalTitle">Admin Access</h3>
-        <form id="adminForm" novalidate>
-          <div class="hp-field">
-            <label for="adminPin">Enter PIN</label>
-            <input type="password" id="adminPin" name="pin" inputmode="numeric" autocomplete="off" required>
-          </div>
-          <p class="hp-field__error" id="adminError" hidden>Incorrect PIN.</p>
-          <button type="submit" class="hp-btn hp-btn--teal">Unlock</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- ================= ADD PRODUCT MODAL ================= -->
-    <div class="hp-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle" aria-hidden="true">
-      <div class="hp-modal__panel">
-        <button type="button" class="hp-modal__close" id="productModalClose" aria-label="Close">&times;</button>
-        <h3 id="productModalTitle">Add A Product</h3>
-        <form id="productForm" novalidate>
-          <div class="hp-field">
-            <label for="pName">Name</label>
-            <input type="text" id="pName" name="name" required>
-          </div>
-          <div class="hp-field">
-            <label for="pStyle">Category</label>
-            <select id="pStyle" name="style" required>
-              <option value="Boiler Parts">Boiler Parts</option>
-              <option value="Automation Products">Automation Products</option>
-              <option value="Pumps">Pumps</option>
-              <option value="Electrical Items">Electrical Items</option>
-              <option value="Instruments">Instruments</option>
-              <option value="Valves">Valves</option>
-            </select>
-          </div>
-          <div class="hp-field">
-            <label for="pImage">Product Image (optional)</label>
-            <input type="file" id="pImage" name="image" accept="image/*">
-            <img id="pImagePreview" alt="" hidden>
-          </div>
-          <div class="hp-field">
-            <label for="pShortDesc">Short Description <span class="hp-field__hint">(shown on the card)</span></label>
-            <textarea id="pShortDesc" name="shortDesc" rows="2" required></textarea>
-          </div>
-          <div class="hp-field">
-            <label for="pFullDesc">Full Description <span class="hp-field__hint">(shown when opened)</span></label>
-            <textarea id="pFullDesc" name="fullDesc" rows="4"></textarea>
-          </div>
-          <button type="submit" class="hp-btn hp-btn--teal">Add Product</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- ================= PRODUCT DETAIL / EDIT MODAL ================= -->
+    <!-- ================= PRODUCT DETAIL MODAL ================= -->
     <div class="hp-modal" id="productDetailModal" role="dialog" aria-modal="true" aria-labelledby="productDetailTitle" aria-hidden="true">
       <div class="hp-modal__panel hp-modal__panel--wide">
         <button type="button" class="hp-modal__close" id="productDetailClose" aria-label="Close">&times;</button>
@@ -706,42 +647,6 @@
         <h3 id="productDetailTitle" class="hp-detail__view-name"></h3>
         <span class="style-chip hp-detail__view-style" id="dViewStyle"></span>
         <p class="hp-detail__view-desc" id="dViewFullDesc"></p>
-
-        <form id="productDetailForm" novalidate hidden>
-          <div class="hp-field">
-            <label for="dName">Name</label>
-            <input type="text" id="dName" name="name" required>
-          </div>
-          <div class="hp-field">
-            <label for="dStyle">Category</label>
-            <select id="dStyle" name="style" required>
-              <option value="Boiler Parts">Boiler Parts</option>
-              <option value="Automation Products">Automation Products</option>
-              <option value="Pumps">Pumps</option>
-              <option value="Electrical Items">Electrical Items</option>
-              <option value="Instruments">Instruments</option>
-              <option value="Valves">Valves</option>
-            </select>
-          </div>
-          <div class="hp-field">
-            <label for="dImage">Product Image</label>
-            <input type="file" id="dImage" name="image" accept="image/*">
-          </div>
-          <div class="hp-field">
-            <label for="dShortDesc">Short Description <span class="hp-field__hint">(shown on the card)</span></label>
-            <textarea id="dShortDesc" name="shortDesc" rows="2" required></textarea>
-          </div>
-          <div class="hp-field">
-            <label for="dFullDesc">Full Description</label>
-            <textarea id="dFullDesc" name="fullDesc" rows="4"></textarea>
-          </div>
-          <button type="submit" class="hp-btn hp-btn--teal">Save Changes</button>
-        </form>
-
-        <div class="hp-detail__actions">
-          <button type="button" class="hp-btn hp-btn--ghost" id="productDetailEdit">Edit</button>
-          <button type="button" class="hp-btn hp-btn--ghost" id="productDetailDelete">Delete</button>
-        </div>
       </div>
     </div>
 
@@ -791,6 +696,7 @@
     </a>
 
     <script src="js/vendor/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js?v=20261009-1"></script>
+    <script src="js/products.js?v=20261009-1"></script>
+    <script src="js/main.js?v=20261010-1"></script>
   </body>
 </html>

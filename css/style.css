@@ -294,7 +294,7 @@ img { max-width: 100%; height: auto; display: block; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 6rem 0 6rem;
+  padding: clamp(7.5rem, 14vh, 10rem) 0 clamp(6.5rem, 11vh, 8rem);
   background: linear-gradient(180deg, rgba(20,17,15,.7) 0%, rgba(20,17,15,.82) 55%, var(--ink) 100%),
               #0f0d0b;
   overflow: hidden;
@@ -314,38 +314,98 @@ img { max-width: 100%; height: auto; display: block; }
   pointer-events: none;
 }
 .hp-hero .container { position: relative; z-index: 2; }
+.hp-hero__layout { row-gap: 3rem; }
+.hp-hero__copy { min-width: 0; }
 
 .hp-hero__kicker {
   display: inline-flex;
   align-items: center;
   gap: .6rem;
   font-weight: 700;
-  letter-spacing: .26em;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  font-size: .78rem;
+  font-size: .7rem;
   color: var(--amber);
   border: 1px solid var(--ink-line);
   background: rgba(20,17,15,.5);
-  padding: .5rem 1rem;
+  padding: .55rem .9rem;
   border-radius: 40px;
-  margin-bottom: 1.6rem;
+  margin: 0 0 1.35rem;
 }
 .hp-hero__kicker .pip { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(23,192,168,.25); }
 
 .hp-hero h1 {
-  font-size: clamp(3.2rem, 9vw, 6.6rem);
-  margin-bottom: .4em;
+  font-size: clamp(3.2rem, 6vw, 5.8rem);
+  line-height: .96;
+  letter-spacing: 0;
+  margin: 0 0 .28em;
   max-width: 15ch;
 }
 .hp-hero h1 em { color: var(--amber); font-style: normal; position: relative; }
 .hp-hero h1 .teal { color: var(--teal); font-style: normal; }
 .hp-hero__sub {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
   color: var(--bone-dim);
-  max-width: 52ch;
-  margin-bottom: 2.2rem;
+  max-width: 54ch;
+  margin: 0 0 1.8rem;
+  line-height: 1.75;
 }
-.hp-hero__cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+.hp-hero__cta { display: flex; flex-wrap: wrap; gap: .9rem; margin: 0; }
+.hp-hero__cta .hp-btn { min-height: 3.35rem; }
+
+.hp-hero__feature-wrap { min-width: 0; }
+.hp-hero__feature {
+  position: relative;
+  max-width: 440px;
+  margin-left: auto;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  overflow: hidden;
+  border: 1px solid rgba(243,236,226,.16);
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(38,32,25,.94), rgba(20,17,15,.86));
+  box-shadow: 0 30px 80px -42px rgba(0,0,0,.9), inset 0 1px rgba(255,255,255,.06);
+  backdrop-filter: blur(12px);
+}
+.hp-hero__feature::after {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  right: -105px;
+  top: -105px;
+  border: 1px solid rgba(240,169,44,.25);
+  border-radius: 50%;
+  box-shadow: 0 0 0 22px rgba(240,169,44,.035), 0 0 0 46px rgba(240,169,44,.025);
+  pointer-events: none;
+}
+.hp-hero__feature-head { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.4rem; }
+.hp-hero__feature-icon {
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  place-items: center;
+  border: 1px solid rgba(23,192,168,.35);
+  border-radius: 10px;
+  background: rgba(23,192,168,.1);
+  color: var(--teal);
+}
+.hp-hero__feature-icon svg { width: 1.65rem; height: 1.65rem; }
+.hp-hero__feature-label {
+  color: var(--teal);
+  font-size: .69rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.hp-hero__feature h2 { max-width: 12ch; font-size: clamp(1.8rem, 2.8vw, 2.35rem); line-height: 1.02; margin: 0 0 .7rem; }
+.hp-hero__feature > p { color: var(--smoke); font-size: .94rem; line-height: 1.65; margin: 0; }
+.hp-hero__feature-list { list-style: none; display: grid; gap: .85rem; margin: 1.4rem 0 1.35rem; padding: 1.25rem 0; border-top: 1px solid var(--ink-line); border-bottom: 1px solid var(--ink-line); }
+.hp-hero__feature-list li { display: flex; align-items: center; gap: .8rem; color: var(--bone-dim); font-size: .88rem; line-height: 1.4; }
+.hp-hero__feature-list li span { color: var(--amber); font-family: var(--ff-display); font-size: 1rem; letter-spacing: .08em; }
+.hp-hero__feature-link { display: inline-flex; align-items: center; gap: .65rem; color: var(--bone); font-size: .78rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.hp-hero__feature-link span { color: var(--amber); font-size: 1.1rem; transition: transform .2s ease; }
+.hp-hero__feature-link:hover { color: var(--amber); }
+.hp-hero__feature-link:hover span { transform: translateX(4px); }
 
 .hp-hero__stats {
   display: flex;
@@ -381,6 +441,22 @@ img { max-width: 100%; height: auto; display: block; }
   z-index: 1;
 }
 
+@media (max-width: 991.98px) {
+  .hp-hero { min-height: auto; padding: 8rem 0 7rem; }
+  .hp-hero h1 { max-width: 15ch; font-size: clamp(3.1rem, 8vw, 5rem); }
+  .hp-hero__feature { margin: 0; max-width: 560px; }
+}
+
+@media (max-width: 575.98px) {
+  .hp-hero { padding: 7.25rem 0 6rem; }
+  .hp-hero__kicker { max-width: 100%; font-size: .62rem; letter-spacing: .12em; line-height: 1.5; }
+  .hp-hero h1 { font-size: clamp(2.8rem, 13vw, 4.4rem); }
+  .hp-hero__sub { font-size: 1rem; }
+  .hp-hero__cta { display: grid; grid-template-columns: 1fr; }
+  .hp-hero__cta .hp-btn { justify-content: center; }
+  .hp-hero__feature { padding: 1.4rem; border-radius: 12px; }
+}
+
 /* ==========================================================================
    ON TAP / BEER GRID
    ========================================================================== */
@@ -393,12 +469,6 @@ img { max-width: 100%; height: auto; display: block; }
   margin-bottom: 2.5rem;
 }
 
-.tap-head__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .8rem;
-}
-
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -409,14 +479,6 @@ img { max-width: 100%; height: auto; display: block; }
 .beer-card {
   position: relative;
 }
-
-/* ---------- Admin gate: hidden until unlocked ---------- */
-body:not(.is-admin) #addProductBtn,
-body:not(.is-admin) .hp-detail__actions {
-  display: none !important;
-}
-#adminToggleBtn.is-active { border-color: var(--teal); color: var(--teal); }
-.hp-field__error { color: #ff6b6b; font-size: .82rem; margin: -.4rem 0 1rem; }
 
 .beer-card--custom { cursor: pointer; }
 .beer-card__thumb {
@@ -482,49 +544,7 @@ body:not(.is-admin) .hp-detail__actions {
 .quote-list__remove:hover { color: var(--amber); }
 #quoteListActions[hidden], #quoteListItems:empty { display: none; }
 #shop .product-card__foot [data-add-bag][aria-pressed="true"] { background: var(--amber); color: var(--ink); }
-.hp-field { margin-bottom: 1.1rem; }
-.hp-field-row { display: flex; gap: 1rem; }
-.hp-field-row .hp-field { flex: 1; }
-.hp-field label {
-  display: block;
-  font-size: .76rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--smoke);
-  margin-bottom: .4rem;
-}
-.hp-field input,
-.hp-field select,
-.hp-field textarea {
-  width: 100%;
-  background: var(--ink-3);
-  border: 1px solid var(--ink-line);
-  border-radius: 8px;
-  padding: .6rem .8rem;
-  color: var(--bone);
-  font-family: var(--ff-body);
-  font-size: .95rem;
-}
-.hp-field input[type="color"] { padding: .3rem; height: 44px; cursor: pointer; }
-.hp-field input[type="file"] { padding: .5rem .8rem; cursor: pointer; }
-#pImagePreview {
-  display: block;
-  width: 100%;
-  max-height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid var(--ink-line);
-  margin-top: .7rem;
-}
-.hp-field input:focus,
-.hp-field select:focus,
-.hp-field textarea:focus { outline: 2px solid var(--teal); border-color: var(--teal); }
-.hp-field__hint { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--smoke); font-size: .74rem; }
-#productForm .hp-btn,
-#productDetailForm .hp-btn { width: 100%; margin-top: .4rem; }
-
-/* ---------- Product Detail / Edit Modal ---------- */
+/* ---------- Product detail modal ---------- */
 .hp-modal__panel--wide { max-width: 560px; }
 .hp-detail__image {
   display: block;
@@ -537,9 +557,6 @@ body:not(.is-admin) .hp-detail__actions {
 .hp-detail__view-name { margin-bottom: .5rem; }
 .hp-detail__view-style { margin-bottom: 1rem; }
 .hp-detail__view-desc { color: var(--bone-dim); line-height: 1.6; margin-bottom: 1.4rem; }
-.hp-detail__actions { display: flex; gap: .8rem; }
-.hp-detail__actions .hp-btn { flex: 1; }
-#productDetailDelete:hover { border-color: #c8324f; color: #e0546f; }
 .filter-btn {
   font-family: var(--ff-body);
   font-weight: 700;
