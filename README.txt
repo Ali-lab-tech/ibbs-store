@@ -15,13 +15,18 @@ same catalog. Add entries to window.IBBS_PRODUCTS using this shape:
       style: "Boiler Parts",
       shortDesc: "Original, verified summary shown on the product card.",
       fullDesc: "Original description using confirmed product information.",
-      image: "img/approved-product-photo.jpg"
+      image: "img/approved-product-photo.jpg",
+      imageAlt: "Accurate descriptive text for the main product image.",
+      images: ["img/approved-product-photo.jpg", "img/approved-product-view-2.jpg"],
+      imageAlts: ["Front view of the product", "Side view of the product"]
     }
   ];
 
 Supported categories are Boiler Parts, Automation Products, Pumps, Electrical Items,
-Instruments, and Valves. The fullDesc and image fields are optional. Product photos
-must be IBBS-owned or used with permission.
+Instruments, and Valves. The fullDesc, image, and images fields are optional. Use
+images for a gallery of multiple product views. Use imageAlt and imageAlts for
+accurate descriptive alt text. Product photos must be IBBS-owned or used with
+permission.
 Do not copy supplier descriptions or make unverified specifications or compatibility
 claims.
 

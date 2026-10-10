@@ -196,8 +196,11 @@
       var image = document.createElement("img");
       thumb.className = "beer-card__thumb";
       image.src = product.image;
-      image.alt = product.name;
+      image.alt = product.imageAlt || product.name;
+      image.width = 896;
+      image.height = 1200;
       image.loading = "lazy";
+      image.decoding = "async";
       thumb.appendChild(image);
       article.appendChild(thumb);
     }
@@ -228,11 +231,11 @@
     var empty = document.querySelector(".no-results");
     var modal = document.getElementById("productDetailModal");
     var closeBtn = document.getElementById("productDetailClose");
-    var image = document.getElementById("dImagePreview");
+    var gallery = document.getElementById("productDetailGallery");
     var title = document.getElementById("productDetailTitle");
     var category = document.getElementById("dViewStyle");
     var description = document.getElementById("dViewFullDesc");
-    if (!grid || !empty || !modal || !closeBtn || !image || !title || !category || !description) return;
+    if (!grid || !empty || !modal || !closeBtn || !gallery || !title || !category || !description) return;
 
     var products = window.IBBS_PRODUCTS;
     if (!Array.isArray(products)) {
@@ -251,9 +254,21 @@
     };
     var openDetail = function (product, card) {
       lastFocus = card;
-      image.src = product.image || "";
-      image.alt = product.image ? product.name : "";
-      image.hidden = !product.image;
+      gallery.replaceChildren();
+      var productImages = Array.isArray(product.images) ? product.images : (product.image ? [product.image] : []);
+      productImages.forEach(function (src, index) {
+        if (typeof src !== "string" || !src) return;
+        var image = document.createElement("img");
+        image.src = src;
+        image.alt = Array.isArray(product.imageAlts) && product.imageAlts[index]
+          ? product.imageAlts[index]
+          : product.name + (productImages.length > 1 ? " - view " + (index + 1) : "");
+        image.width = 896;
+        image.height = 1200;
+        image.loading = "eager";
+        image.decoding = "async";
+        gallery.appendChild(image);
+      });
       title.textContent = product.name;
       category.textContent = product.style;
       category.setAttribute("data-s", product.style);
@@ -280,7 +295,12 @@
           typeof product.name !== "string" || !product.name ||
           typeof product.style !== "string" || !product.style ||
           typeof product.shortDesc !== "string" || !product.shortDesc ||
-          (product.image !== undefined && typeof product.image !== "string")) {
+          (product.image !== undefined && typeof product.image !== "string") ||
+          (product.imageAlt !== undefined && typeof product.imageAlt !== "string") ||
+          (product.imageAlts !== undefined && (!Array.isArray(product.imageAlts) ||
+            !product.imageAlts.every(function (alt) { return typeof alt === "string"; }))) ||
+          (product.images !== undefined && (!Array.isArray(product.images) ||
+            !product.images.every(function (src) { return typeof src === "string"; })))) {
         console.error("Invalid IBBS product catalog entry at index " + index + ".");
         return;
       }
