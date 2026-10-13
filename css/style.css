@@ -469,6 +469,74 @@ img { max-width: 100%; height: auto; display: block; }
   margin-bottom: 2.5rem;
 }
 
+.tap-head__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+.product-add-button {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--teal);
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--ink);
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform .2s ease, background .2s ease;
+}
+.product-add-button:hover,
+.product-add-button:focus-visible {
+  transform: scale(1.06);
+  background: var(--bone);
+  color: var(--ink);
+}
+#downloadProductsBtn[hidden],
+#productPublishStatus[hidden] { display: none; }
+.product-publish-status {
+  margin: -1.4rem 0 1.6rem;
+  padding: .8rem 1rem;
+  border: 1px solid rgba(23,192,168,.35);
+  border-radius: 8px;
+  background: rgba(23,192,168,.08);
+  color: var(--bone-dim);
+  font-size: .9rem;
+}
+.product-editor-note { color: var(--smoke); font-size: .9rem; margin: -0.5rem 0 1.3rem; }
+.hp-field { margin-bottom: 1.1rem; }
+.hp-field label {
+  display: block;
+  margin-bottom: .4rem;
+  color: var(--smoke);
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.hp-field input,
+.hp-field select,
+.hp-field textarea {
+  width: 100%;
+  border: 1px solid var(--ink-line);
+  border-radius: 8px;
+  padding: .65rem .8rem;
+  background: var(--ink-3);
+  color: var(--bone);
+  font: inherit;
+}
+.hp-field input[type="file"] { padding: .55rem; }
+.hp-field input:focus,
+.hp-field select:focus,
+.hp-field textarea:focus { outline: 2px solid var(--teal); border-color: var(--teal); }
+.hp-field__hint { color: var(--smoke); font-size: .74rem; font-weight: 400; letter-spacing: 0; text-transform: none; }
+.hp-field__error { margin: -.3rem 0 1rem; color: #ff8c8c; font-size: .88rem; }
+.product-editor-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+
 .filter-bar {
   display: flex;
   flex-wrap: wrap;

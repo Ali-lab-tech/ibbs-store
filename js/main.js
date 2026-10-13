@@ -290,6 +290,22 @@
       if (event.key === "Escape" && modal.classList.contains("open")) closeModal();
     });
 
+    var appendProductCard = function (product) {
+      var card = buildBeerCard(product);
+      var activeFilter = document.querySelector(".filter-btn.is-active");
+      var filterValue = activeFilter ? activeFilter.getAttribute("data-filter") : "all";
+      card.classList.toggle("is-hidden", filterValue !== "all" && product.style !== filterValue);
+      card.addEventListener("click", function () { openDetail(product, card); });
+      card.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openDetail(product, card);
+        }
+      });
+      grid.appendChild(card);
+      empty.classList.toggle("show", visibleCount() === 0);
+    };
+
     products.forEach(function (product, index) {
       if (!product || typeof product.id !== "string" || !product.id ||
           typeof product.name !== "string" || !product.name ||
@@ -304,19 +320,11 @@
         console.error("Invalid IBBS product catalog entry at index " + index + ".");
         return;
       }
-      var card = buildBeerCard(product);
-      var openCard = function () { openDetail(product, card); };
-      card.addEventListener("click", openCard);
-      card.addEventListener("keydown", function (event) {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          openCard();
-        }
-      });
-      grid.appendChild(card);
+      appendProductCard(product);
     });
 
     if (visibleCount() === 0) empty.classList.add("show");
+
   }
 
   /* ---------- Industrial product quote shortlist ---------- */

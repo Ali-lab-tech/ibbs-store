@@ -6,19 +6,15 @@ window.IBBS_PRODUCTS = [
     id: "industrial-digital-controller",
     name: "Industrial Digital Controller",
     style: "Electrical Items",
-    shortDesc: "Digital industrial controller with display panels. Contact IBBS to verify the exact type, model, and specifications.",
-    fullDesc: "These images show digital industrial controllers. Share the model number and intended application with IBBS to confirm the exact product type and specifications before ordering.",
-    image: "img/industrial-digital-controller-front-view.jpg",
-    imageAlt: "Industrial digital controllers with blue LED display panels, front view",
+    shortDesc: "PID digital temperature controller with dual blue display and relay/SSR output. Contact IBBS to confirm the model and specifications.",
+    fullDesc: "Industrial PID digital temperature controller with dual PV and SV displays. Contact IBBS to confirm the exact model, relay/SSR configuration, and electrical specifications.",
+    image: "img/industrial-pid-temperature-controller-relay-ssr.webp",
+    imageAlt: "Industrial PID digital temperature controller with dual blue display showing PV and SV values, distributed by IBBS.",
     images: [
-      "img/industrial-digital-controller-front-view.jpg",
-      "img/industrial-digital-controller-panel-displays.jpg",
-      "img/industrial-digital-controller-terminal-connections.jpg"
+      "img/industrial-pid-temperature-controller-relay-ssr.webp"
     ],
     imageAlts: [
-      "Industrial digital controllers with blue LED display panels, front view",
-      "Industrial digital controllers with process value displays and front control keys",
-      "Digital controller front panel and side terminal connections"
+      "Industrial PID digital temperature controller with dual blue display showing PV and SV values, distributed by IBBS."
     ]
   }
 ];

@@ -1,1 +1,5 @@
 .playwright-mcp/
+
+# Local-only product editor. Do not publish these files to the website.
+/product-admin.html
+/js/product-admin.js
