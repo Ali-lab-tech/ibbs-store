@@ -22,8 +22,9 @@ same catalog. Add entries to window.IBBS_PRODUCTS using this shape:
     }
   ];
 
-Supported categories are Boiler Parts, Automation Products, Pumps, Electrical Items,
-Instruments, and Valves. The fullDesc, image, and images fields are optional. Use
+Supported categories are Boiler Parts, Automation Products, Pneumatic Parts, Pumps,
+Electrical Items, Instruments, and Valves. The fullDesc, image, and images fields
+are optional. Use
 images for a gallery of multiple product views. Use imageAlt and imageAlts for
 accurate descriptive alt text. Product photos must be IBBS-owned or used with
 permission.
