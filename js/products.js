@@ -16,5 +16,24 @@ window.IBBS_PRODUCTS = [
     imageAlts: [
       "Industrial PID digital temperature controller with dual blue display showing PV and SV values, distributed by IBBS."
     ]
+  },
+  {
+    id: "ibbs-portable-multifunction-airbrush-compressor-kit",
+    name: "Portable Multifunction Airbrush Compressor Kit",
+    style: "Automation Products",
+    shortDesc: "Cordless airbrush kit with rechargeable handheld compressor, 0.3mm dual-action spray gun, case, and maintenance needles.",
+    fullDesc: "IBBS precision multifunction cordless airbrush kit with rechargeable handheld automatic air compressor, 0.3mm dual-action spray gun, protective case, and maintenance needles for industrial model coloring, coatings, and specialized calibration markings.",
+    image: "img/ibbs-portable-multifunction-airbrush-compressor-kit.png",
+    imageAlt: "IBBS precision multifunction cordless airbrush kit with rechargeable handheld automatic air compressor, 0.3mm dual-action spray gun, protective case, and maintenance needles for industrial model coloring, coatings, and specialized calibration markings.",
+    images: [
+      "img/ibbs-portable-multifunction-airbrush-compressor-kit.png",
+      "img/ibbs-portable-multifunction-airbrush-compressor-kit-box.png",
+      "img/ibbs-portable-multifunction-airbrush-compressor-kit-accessories.png"
+    ],
+    imageAlts: [
+      "IBBS precision multifunction cordless airbrush kit with rechargeable handheld automatic air compressor, 0.3mm dual-action spray gun, protective case, and maintenance needles for industrial model coloring, coatings, and specialized calibration markings.",
+      "Portable airbrush compressor and spray gun displayed on the multifunction airbrush kit box.",
+      "Needles and spare airbrush components arranged inside the protective kit case."
+    ]
   }
 ];
