@@ -30,12 +30,11 @@ permission.
 Do not copy supplier descriptions or make unverified specifications or compatibility
 claims.
 
-The product editor is local-only and must not be uploaded to the live website.
-Open product-admin.html from your local working copy to prepare catalog drafts.
-It is intentionally excluded from Git, along with js/product-admin.js, so it will
-not be deployed when you push or pull website changes. Download the publish files
-from the local editor, move any downloaded images into the site's img folder, and
-replace js/products.js with the downloaded catalog file.
+The product editor is available from the Products section's + button at
+product-admin.html. Its JavaScript password prompt is only a casual gate; a static
+site cannot keep that password secret or provide real authentication. The editor
+prepares drafts only. Download its publish files, move any downloaded images into
+the site's img folder, and replace js/products.js with the downloaded catalog file.
 
 To publish the downloaded files, commit and push them to the dev branch, then run
 this in cPanel Terminal:

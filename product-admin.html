@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#14110f">
+    <title>Local Product Editor | IBBS</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <main class="section section--ink2">
+      <div class="container" style="max-width:820px">
+        <a class="hp-btn hp-btn--ghost" href="index.html">Back to website</a>
+        <div class="text-center" style="margin:2.5rem auto">
+          <span class="eyebrow" style="justify-content:center">IBBS product tool</span>
+          <h1 class="section-title">Product <em>Catalog Editor</em></h1>
+          <p class="lead-muted">Prepare product drafts here. Nothing is published until you download and deploy the catalog files.</p>
+        </div>
+
+        <div class="hours-card">
+          <p id="adminCatalogCount" role="status">Loading the published product catalog…</p>
+          <p class="product-editor-note">Use only product photos IBBS owns or has permission to publish. Confirm product details before deployment.</p>
+          <form id="adminProductForm">
+            <div class="hp-field">
+              <label for="newProductName">Product name</label>
+              <input type="text" id="newProductName" name="name" maxlength="100" required>
+            </div>
+            <div class="hp-field">
+              <label for="newProductCategory">Category</label>
+              <select id="newProductCategory" name="category" required>
+                <option value="Boiler Parts">Boiler Parts</option>
+                <option value="Automation Products">Automation Products</option>
+                <option value="Pumps">Pumps</option>
+                <option value="Electrical Items">Electrical Items</option>
+                <option value="Instruments">Instruments</option>
+                <option value="Valves">Valves</option>
+              </select>
+            </div>
+            <div class="hp-field">
+              <label for="newProductShortDesc">Short description</label>
+              <textarea id="newProductShortDesc" name="shortDesc" rows="3" maxlength="240" required></textarea>
+            </div>
+            <div class="hp-field">
+              <label for="newProductFullDesc">Full description <span class="hp-field__hint">(optional)</span></label>
+              <textarea id="newProductFullDesc" name="fullDesc" rows="4" maxlength="1200"></textarea>
+            </div>
+            <div class="hp-field">
+              <label for="newProductImages">Product photos <span class="hp-field__hint">(optional; JPG, PNG, or WebP)</span></label>
+              <input type="file" id="newProductImages" name="images" accept="image/jpeg,image/png,image/webp" multiple>
+            </div>
+            <div class="hp-field">
+              <label for="newProductImageAlt">Main photo description <span class="hp-field__hint">(optional, for accessibility)</span></label>
+              <input type="text" id="newProductImageAlt" name="imageAlt" maxlength="180">
+            </div>
+            <p id="adminProductError" class="hp-field__error" role="alert" hidden></p>
+            <div class="product-editor-actions">
+              <button type="submit" class="hp-btn hp-btn--amber">Add to Catalog Draft</button>
+              <button type="button" id="downloadProductsBtn" class="hp-btn hp-btn--ghost" hidden>Download Publish Files</button>
+            </div>
+          </form>
+          <p id="productPublishStatus" class="product-publish-status" role="status" aria-live="polite" hidden></p>
+          <div id="adminDraftsWrap" hidden>
+            <h3>Drafts ready to publish</h3>
+            <ul id="adminDraftList"></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/products.js"></script>
+    <script src="js/product-admin.js"></script>
+  </body>
+</html>
