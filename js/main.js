@@ -156,17 +156,30 @@
     var grid = document.querySelector(".beer-grid");
     if (!bar || !grid) return;
     var empty = document.querySelector(".no-results");
+    var search = document.getElementById("productSearch");
+    var count = document.getElementById("productCount");
     var buttons = Array.prototype.slice.call(bar.querySelectorAll(".filter-btn"));
 
-    var apply = function (style) {
+    var apply = function () {
+      var active = bar.querySelector(".filter-btn.is-active");
+      var style = active ? active.getAttribute("data-filter") : "all";
+      var query = search ? search.value.trim().toLocaleLowerCase() : "";
       var shown = 0;
       var cards = Array.prototype.slice.call(grid.querySelectorAll(".beer-card"));
       cards.forEach(function (card) {
-        var match = style === "all" || card.getAttribute("data-style") === style;
+        var categoryMatch = style === "all" || card.getAttribute("data-style") === style;
+        var searchMatch = !query || (card.textContent || "").toLocaleLowerCase().indexOf(query) !== -1;
+        var match = categoryMatch && searchMatch;
         card.classList.toggle("is-hidden", !match);
         if (match) shown++;
       });
-      if (empty) empty.classList.toggle("show", shown === 0);
+      if (count) count.textContent = shown + " product" + (shown === 1 ? "" : "s");
+      if (empty) {
+        empty.textContent = cards.length === 0
+          ? "No published product listings are available yet. Contact IBBS to ask about a specific part."
+          : "No products match your search. Try another name or category.";
+        empty.classList.toggle("show", shown === 0);
+      }
     };
 
     bar.addEventListener("click", function (e) {
@@ -178,8 +191,11 @@
       });
       btn.classList.add("is-active");
       btn.setAttribute("aria-pressed", "true");
-      apply(btn.getAttribute("data-filter"));
+      apply();
     });
+    if (search) search.addEventListener("input", apply);
+    bar.addEventListener("catalogchange", apply);
+    apply();
   }
 
   /* ---------- Published product catalog ---------- */
@@ -324,7 +340,49 @@
     });
 
     if (visibleCount() === 0) empty.classList.add("show");
+    var filterBar = document.querySelector(".filter-bar");
+    if (filterBar) filterBar.dispatchEvent(new Event("catalogchange"));
 
+  }
+
+  /* ---------- Scroll progress indicator ---------- */
+  function initScrollProgress() {
+    var progress = document.getElementById("scrollProgressBar");
+    if (!progress) return;
+    var scheduled = false;
+    var update = function () {
+      var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      var percent = maxScroll > 0 ? Math.min(100, Math.max(0, window.scrollY / maxScroll * 100)) : 0;
+      progress.style.width = percent + "%";
+      scheduled = false;
+    };
+    var schedule = function () {
+      if (!scheduled) {
+        scheduled = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    update();
+  }
+
+  /* ---------- Subtle pointer depth on the hero card ---------- */
+  function initHeroDepth() {
+    var hero = document.querySelector(".hp-hero");
+    var card = document.querySelector(".hp-hero__feature");
+    if (!hero || !card || reduceMotion || !window.matchMedia("(pointer: fine)").matches) return;
+    hero.addEventListener("pointermove", function (event) {
+      var bounds = hero.getBoundingClientRect();
+      var x = (event.clientX - bounds.left) / bounds.width - .5;
+      var y = (event.clientY - bounds.top) / bounds.height - .5;
+      card.style.setProperty("--depth-x", (x * 3).toFixed(2) + "deg");
+      card.style.setProperty("--depth-y", (y * -3).toFixed(2) + "deg");
+    });
+    hero.addEventListener("pointerleave", function () {
+      card.style.setProperty("--depth-x", "0deg");
+      card.style.setProperty("--depth-y", "0deg");
+    });
   }
 
   /* ---------- Industrial product quote shortlist ---------- */
@@ -564,6 +622,8 @@
   /* ---------- init ---------- */
   document.addEventListener("DOMContentLoaded", function () {
     initStickyNav();
+    initScrollProgress();
+    initHeroDepth();
     initMobileNav();
     initScrollSpy();
     initClientLogos();

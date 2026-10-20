@@ -25,7 +25,7 @@
     <meta name="twitter:description" content="Industrial parts and process instruments, plus boiler, burner and automation services in Pakistan, Saudi Arabia, Dubai (UAE), Bangladesh and other markets.">
     <meta name="twitter:image" content="https://ibbs-store.com/img/ibbs-story-photo.jpe">
     <meta name="twitter:image:alt" content="IBBS industrial technician working with plant control equipment">
-    <link rel="icon" type="image/png" href="img/ibbs-icon-mark.png">
+    <link rel="icon" type="image/svg+xml" href="img/ibbs-seal-icon.svg">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -34,7 +34,7 @@
         "name": "Industrial Boiler & Burner Services (IBBS)",
         "alternateName": "IBBS",
         "url": "https://ibbs-store.com/",
-        "logo": "https://ibbs-store.com/img/ibbs-icon-mark.png",
+        "logo": "https://ibbs-store.com/img/ibbs-logo-seal.svg",
         "image": "https://ibbs-store.com/img/ibbs-story-photo.jpe",
         "description": "Lahore-based supplier of general industrial parts and process instruments, providing coal-fired boiler maintenance, burner, PLC, and automation services in Pakistan and international markets including Saudi Arabia, Dubai in the UAE, and Bangladesh.",
         "telephone": "+923092190828",
@@ -125,12 +125,13 @@
     <link rel="stylesheet" href="css/style.css?v=20261010-6">
   </head>
   <body>
+    <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- ================= NAVBAR ================= -->
     <nav class="hp-nav navbar navbar-expand-lg" aria-label="Primary">
       <div class="container">
-        <a class="navbar-brand" href="index.html" aria-label="IBBS home"><img src="img/ibbs-icon-mark.png" alt="" width="32" height="32" class="navbar-brand__icon">IBBS<span class="dot">.</span></a>
+        <a class="navbar-brand" href="index.html" aria-label="IBBS home"><img src="img/ibbs-logo-seal.svg" alt="Industrial Boiler &amp; Burner Services" width="276" height="60" class="navbar-brand__logo"></a>
 
         <div class="d-flex align-items-center order-lg-3 nav-cta-wrap">
           <button class="hp-bag" type="button" aria-label="Quote list, 0 items" aria-haspopup="dialog" aria-controls="quoteListModal">
@@ -216,6 +217,13 @@
           <a class="product-add-button" href="product-admin.html" aria-label="Add product" title="Add product" onclick="if (window.prompt('Enter password to add a product:') !== '1998') return false; try { sessionStorage.setItem('ibbsProductEditorAccess', 'granted'); } catch (error) {}">+</a>
         </div>
 
+        <div class="catalog-tools reveal">
+          <label class="catalog-search" for="productSearch">
+            <span class="catalog-search__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg></span>
+            <input id="productSearch" type="search" placeholder="Search products or categories" autocomplete="off">
+          </label>
+          <p class="catalog-count" id="productCount" aria-live="polite"></p>
+        </div>
         <div class="filter-bar reveal" role="group" aria-label="Filter products by category">
           <button class="filter-btn is-active" data-filter="all" aria-pressed="true">All Categories</button>
           <button class="filter-btn" data-filter="Boiler Parts" aria-pressed="false">Boiler Parts</button>
@@ -602,7 +610,7 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <div class="footer-brand">IBBS<span class="dot">.</span></div>
+            <img src="img/ibbs-logo-seal.svg" alt="Industrial Boiler &amp; Burner Services" width="276" height="60" class="footer-brand-logo">
             <p>Trusted general order supplier and industrial services provider specializing in advanced automation, boiler maintenance, and engineering solutions in Pakistan and international markets.</p>
             <div class="social-row">
               <a href="https://www.facebook.com/share/16KXL77quX/" aria-label="IBBS on Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
