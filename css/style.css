@@ -2,9 +2,9 @@
 html:not(.js) .reveal,html:not(.js) [class*="reveal"]{opacity:1!important;transform:none!important;filter:none!important}
 
 /* ==========================================================================
-   HOPS — Craft Brewery & Taproom Template
-   Bold industrial design layer over Bootstrap 5. Vanilla, jQuery-free.
-   Palette: deep navy + flame orange + sky blue.
+   IBBS industrial services website
+   Responsive design layer over Bootstrap 5. Vanilla, jQuery-free.
+   Palette: deep navy + flame orange + white highlights.
    ========================================================================== */
 
    
@@ -13,16 +13,16 @@ html:not(.js) .reveal,html:not(.js) [class*="reveal"]{opacity:1!important;transf
   --ink:        #0d1425;   /* deep navy base */
   --ink-2:      #121d33;   /* raised navy panel */
   --ink-3:      #1a2943;   /* card surface */
-  --ink-line:   #34445f;   /* muted blue hairline */
-  --smoke:      #aebbd0;   /* muted blue-gray text */
-  --bone:       #f5f8ff;   /* clean white body text */
-  --bone-dim:   #dbe4f2;
+  --ink-line:   #77736d;   /* neutral gray hairline */
+  --smoke:      #b9b4ad;   /* muted warm-gray text */
+  --bone:       #f5f5f5;   /* clean white body text */
+  --bone-dim:   #dedbd6;
 
   --amber:      #f47721;   /* flame orange */
   --amber-deep: #d9501b;
   --amber-soft: #ffae42;
-  --teal:       #42b8f5;   /* sky blue */
-  --teal-deep:  #1689d0;
+  --teal:       #ffffff;   /* white highlight */
+  --teal-deep:  #e7e7e7;
   --rust:       #bd431c;   /* deep flame orange */
 
   --shadow-lg:  0 26px 60px -24px rgba(0,0,0,.75);
@@ -128,6 +128,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .section-title em { color: var(--amber); font-style: normal; }
 .lead-muted { color: var(--smoke); font-size: 1.08rem; max-width: 58ch; }
+.loc-intro { margin-bottom: 2rem; }
 
 /* ---------- Buttons ---------- */
 .btn { --bs-btn-focus-box-shadow: none; }
@@ -262,7 +263,8 @@ img { max-width: 100%; height: auto; display: block; }
   cursor: pointer;
   transition: border-color .2s ease, color .2s ease;
 }
-.hp-bag:hover { border-color: var(--teal); color: var(--teal); }
+.hp-bag { border-color: rgba(255,255,255,.78); }
+.hp-bag:hover { border-color: #fff; color: #fff; }
 .hp-bag__count {
   position: absolute;
   top: -8px; right: -8px;
@@ -333,13 +335,13 @@ img { max-width: 100%; height: auto; display: block; }
   text-transform: uppercase;
   font-size: .7rem;
   color: var(--amber);
-  border: 1px solid var(--ink-line);
+  border: 1px solid rgba(255,255,255,.55);
   background: rgba(20,17,15,.5);
   padding: .55rem .9rem;
   border-radius: 40px;
   margin: 0 0 1.35rem;
 }
-.hp-hero__kicker .pip { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(66,184,245,.2); }
+.hp-hero__kicker .pip { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(255,255,255,.2); }
 
 .hp-hero h1 {
   font-size: clamp(3.2rem, 6vw, 5.8rem);
@@ -359,6 +361,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .hp-hero__cta { display: flex; flex-wrap: wrap; gap: .9rem; margin: 0; }
 .hp-hero__cta .hp-btn { min-height: 3.35rem; }
+.hp-hero__cta .hp-btn--ghost { color: #fff; border-color: rgba(255,255,255,.8); }
 
 .hp-hero__feature-wrap { min-width: 0; }
 .hp-hero__feature {
@@ -393,9 +396,9 @@ img { max-width: 100%; height: auto; display: block; }
   width: 2.8rem;
   height: 2.8rem;
   place-items: center;
-  border: 1px solid rgba(66,184,245,.35);
+  border: 1px solid rgba(255,255,255,.55);
   border-radius: 10px;
-  background: rgba(66,184,245,.1);
+  background: rgba(255,255,255,.12);
   color: var(--teal);
 }
 .hp-hero__feature-icon svg { width: 1.65rem; height: 1.65rem; }
@@ -467,7 +470,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* ==========================================================================
-   ON TAP / BEER GRID
+   PRODUCT CATALOG
    ========================================================================== */
 .tap-head {
   display: flex;
@@ -510,9 +513,9 @@ img { max-width: 100%; height: auto; display: block; }
 .product-publish-status {
   margin: -1.4rem 0 1.6rem;
   padding: .8rem 1rem;
-  border: 1px solid rgba(66,184,245,.35);
+  border: 1px solid rgba(255,255,255,.55);
   border-radius: 8px;
-  background: rgba(66,184,245,.08);
+  background: rgba(255,255,255,.08);
   color: var(--bone-dim);
   font-size: .9rem;
 }
@@ -566,7 +569,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--teal);
   transition: border-color .2s ease, box-shadow .2s ease;
 }
-.catalog-search:focus-within { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(66,184,245,.12); }
+.catalog-search:focus-within { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(255,255,255,.12); }
 .catalog-search__icon { font-size: 1.6rem; line-height: 1; }
 .catalog-search__icon svg { display: block; width: 1.2rem; height: 1.2rem; }
 .catalog-search input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--bone); font: inherit; }
@@ -579,12 +582,12 @@ img { max-width: 100%; height: auto; display: block; }
   margin-bottom: 2rem;
 }
 
-.beer-card {
+.catalog-card {
   position: relative;
 }
 
-.beer-card--custom { cursor: pointer; }
-.beer-card__thumb {
+.catalog-card--custom { cursor: pointer; }
+.catalog-card__thumb {
   flex: 0 0 auto;
   width: 112px;
   height: 112px;
@@ -593,7 +596,7 @@ img { max-width: 100%; height: auto; display: block; }
   border: 1px solid var(--ink-line);
   background: #f7f7f7;
 }
-.beer-card__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.catalog-card__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 /* ---------- Add Product Modal ---------- */
 .hp-modal {
@@ -686,12 +689,12 @@ img { max-width: 100%; height: auto; display: block; }
 .filter-btn:hover { border-color: var(--amber); color: var(--bone); }
 .filter-btn.is-active { background: var(--amber); border-color: var(--amber); color: var(--ink); }
 
-.beer-grid {
+.product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.4rem;
 }
-.beer-card {
+.catalog-card {
   background: var(--ink-3);
   border: 1px solid var(--ink-line);
   border-radius: var(--radius);
@@ -700,17 +703,17 @@ img { max-width: 100%; height: auto; display: block; }
   gap: 1.3rem;
   transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
-.beer-card.is-hidden { display: none; }
-.beer-card:hover {
+.catalog-card.is-hidden { display: none; }
+.catalog-card:hover {
   transform: translateY(-5px);
   border-color: var(--amber);
   box-shadow: var(--shadow-sm);
 }
-.beer-card--custom { overflow: hidden; }
-.beer-card--custom .beer-card__thumb { width: 138px; height: 138px; transition: transform .35s ease; }
-.beer-card--custom:hover .beer-card__thumb { transform: scale(1.035); }
-.beer-card--custom:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
-.beer-card--custom .beer-notes { line-height: 1.55; }
+.catalog-card--custom { overflow: hidden; }
+.catalog-card--custom .catalog-card__thumb { width: 138px; height: 138px; transition: transform .35s ease; }
+.catalog-card--custom:hover .catalog-card__thumb { transform: scale(1.035); }
+.catalog-card--custom:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.catalog-card--custom .catalog-notes { line-height: 1.55; }
 
 /* the glass / colour pour indicator */
 .pour {
@@ -762,11 +765,11 @@ img { max-width: 100%; height: auto; display: block; }
   text-transform: uppercase;
 }
 
-.beer-card__body { flex: 1; min-width: 0; }
-.beer-card__top { display: flex; justify-content: space-between; align-items: flex-start; gap: .6rem; }
-.beer-card h3 { font-size: 1.6rem; margin: 0 0 .2rem; }
-.beer-card--custom .beer-card__top { flex-direction: column; align-items: flex-start; gap: .75rem; }
-.beer-card--custom .style-chip { max-width: 100%; }
+.catalog-card__body { flex: 1; min-width: 0; }
+.catalog-card__top { display: flex; justify-content: space-between; align-items: flex-start; gap: .6rem; }
+.catalog-card h3 { font-size: 1.6rem; margin: 0 0 .2rem; }
+.catalog-card--custom .catalog-card__top { flex-direction: column; align-items: flex-start; gap: .75rem; }
+.catalog-card--custom .style-chip { max-width: 100%; }
 .style-chip {
   font-family: var(--ff-body);
   font-weight: 700;
@@ -782,14 +785,14 @@ img { max-width: 100%; height: auto; display: block; }
 .style-chip[data-s="Lager"]    { color: #ffe59b; border-color: #6b5f20; background: rgba(240,220,44,.1); }
 .style-chip[data-s="Stout"]    { color: #d7b8a0; border-color: #4a382c; background: rgba(120,80,50,.16); }
 .style-chip[data-s="Sour"]     { color: #ff9db8; border-color: #6b2038; background: rgba(240,44,110,.1); }
-.style-chip[data-s="Seasonal"] { color: #9bdcff; border-color: #286b91; background: rgba(66,184,245,.12); }
+.style-chip[data-s="Seasonal"] { color: #fff; border-color: #fff; background: rgba(255,255,255,.12); }
 
-.beer-notes { color: var(--smoke); font-size: .92rem; margin: .7rem 0 1rem; }
+.catalog-notes { color: var(--smoke); font-size: .92rem; margin: .7rem 0 1rem; }
 
-.beer-stats { display: flex; gap: 1.4rem; }
-.beer-stats .bs { display: flex; flex-direction: column; }
+.catalog-stats { display: flex; gap: 1.4rem; }
+.catalog-stats .bs { display: flex; flex-direction: column; }
 .bs__v { font-family: var(--ff-display); font-size: 1.5rem; color: var(--amber); line-height: 1; }
-.beer-stats .bs:nth-child(2) .bs__v { color: var(--teal); }
+.catalog-stats .bs:nth-child(2) .bs__v { color: var(--teal); }
 .bs__k { font-size: .64rem; letter-spacing: .16em; text-transform: uppercase; color: var(--smoke); margin-top: .3rem; }
 
 .no-results {
@@ -804,19 +807,19 @@ img { max-width: 100%; height: auto; display: block; }
 @media (max-width: 600px) {
   .catalog-tools { align-items: stretch; flex-direction: column; }
   .catalog-search { width: 100%; }
-  .beer-grid { grid-template-columns: minmax(0, 1fr); }
-  .beer-card--custom { padding: 1rem; gap: 1rem; }
-  .beer-card--custom .beer-card__thumb { width: 100px; height: 100px; }
+  .product-grid { grid-template-columns: minmax(0, 1fr); }
+  .catalog-card--custom { padding: 1rem; gap: 1rem; }
+  .catalog-card--custom .catalog-card__thumb { width: 100px; height: 100px; }
 }
 
 /* ==========================================================================
-   TAPROOM
+   SERVICES
    ========================================================================== */
 /* Align office hours with services and space out the daily rows
    T */
-.taproom-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 3rem; align-items: stretch; }
-.taproom-grid > * { min-width: 0; }
-@media (max-width: 900px) { .taproom-grid { grid-template-columns: minmax(0, 1fr); gap: 2.2rem; } }
+.service-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 3rem; align-items: stretch; }
+.service-grid > * { min-width: 0; }
+@media (max-width: 900px) { .service-grid { grid-template-columns: minmax(0, 1fr); gap: 2.2rem; } }
 
 .hours-card {
   height: 100%;
@@ -860,8 +863,8 @@ img { max-width: 100%; height: auto; display: block; }
   flex: 0 0 auto;
   width: 42px; height: 42px;
   border-radius: var(--radius);
-  background: rgba(66,184,245,.12);
-  border: 1px solid rgba(66,184,245,.3);
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.3);
   display: flex; align-items: center; justify-content: center;
   color: var(--teal);
 }
@@ -1184,7 +1187,7 @@ img { max-width: 100%; height: auto; display: block; }
 .newsletter {
   background:
     radial-gradient(circle at 20% 30%, rgba(244,119,33,.18), transparent 45%),
-    radial-gradient(circle at 85% 70%, rgba(66,184,245,.1), transparent 45%),
+    radial-gradient(circle at 85% 70%, rgba(255,255,255,.12), transparent 45%),
     var(--ink-2);
   border-top: 1px solid var(--ink-line);
   border-bottom: 1px solid var(--ink-line);
@@ -1245,7 +1248,7 @@ img { max-width: 100%; height: auto; display: block; }
 .age-note { color: var(--smoke); }
 
 /* ==========================================================================
-   PAGE HEADER (beers.html)
+   SERVICE PAGE HEADER
    ========================================================================== */
 .page-head {
   padding: 10rem 0 4rem;
@@ -1263,7 +1266,7 @@ img { max-width: 100%; height: auto; display: block; }
 .crumbs { color: var(--smoke); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; }
 .crumbs a { color: var(--bone-dim); }
 
-/* menu (food) on beers page */
+/* related menu layout */
 .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem 3.4rem; }
 @media (max-width: 800px) { .menu-grid { grid-template-columns: 1fr; } }
 .menu-col h3 {
@@ -1291,7 +1294,7 @@ img { max-width: 100%; height: auto; display: block; }
 .flight-note h4 { font-size: 1.3rem; margin-bottom: .3rem; }
 .flight-note p { margin: 0; color: var(--smoke); }
 
-/* full tap table on beers page */
+/* tabular product specification layout */
 .tap-table-wrap { overflow-x: auto; }
 .tap-table { width: 100%; border-collapse: collapse; min-width: 640px; }
 .tap-table th {
@@ -1334,6 +1337,11 @@ img { max-width: 100%; height: auto; display: block; }
 .text-amber { color: var(--amber); }
 .mt-gap { margin-top: 2.5rem; }
 
+.hp-btn:focus-visible {
+  outline: 3px solid #fff;
+  box-shadow: none;
+}
+
 /* ---------- WhatsApp floating button ---------- */
 .wa-float {
   position: fixed;
@@ -1355,4 +1363,101 @@ img { max-width: 100%; height: auto; display: block; }
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 10px 22px rgba(0,0,0,.4);
   color: #fff;
+}
+
+/* Light content panels keep the homepage readable below the dark hero. */
+#main > .section {
+  --ink: #222222;
+  --ink-2: #ffffff;
+  --ink-3: #f4f4f4;
+  --ink-line: #dedbd6;
+  --smoke: #625f59;
+  --bone: #222222;
+  --bone-dim: #444444;
+  --teal: #4a4a4a;
+  --teal-deep: #3a3a3a;
+  color: var(--bone);
+  background: #fff;
+}
+
+#main > .section.newsletter {
+  background: #fff;
+}
+
+#main > .section .hp-btn--ghost {
+  color: #162238;
+  border-color: #fff;
+}
+
+#main > .section .hp-btn--ghost:hover {
+  color: var(--amber-deep);
+}
+
+#main > .section .hp-btn--teal {
+  color: #222;
+  background: #fff;
+  border-color: #666;
+}
+
+#main > .section .hp-btn--teal:hover {
+  color: #222;
+  background: #f2f2f2;
+}
+
+#main > .section .expect-ico {
+  color: var(--amber-deep);
+  background: rgba(244,119,33,.1);
+  border-color: rgba(217,80,27,.35);
+}
+
+#main > .section .product-tag {
+  color: #222;
+  background: #f2f2f2;
+  border: 1px solid #d2d2d2;
+}
+
+.hp-footer {
+  background: #000;
+}
+
+/* Search-friendly, readable standalone service pages. */
+.service-detail-page {
+  min-height: 100vh;
+  background: #fff;
+  color: #242424;
+}
+.service-detail-page h1,
+.service-detail-page h2,
+.service-detail-page h3 { color: #202020; }
+.service-detail-nav,
+.service-detail-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem max(1.25rem, calc((100vw - 1120px) / 2));
+}
+.service-detail-nav { border-bottom: 1px solid #e5e5e5; }
+.service-detail-nav img { width: 220px; height: auto; }
+.service-detail { width: min(100% - 2.5rem, 920px); margin: 0 auto; padding: 2rem 0 5rem; }
+.service-breadcrumb { display: flex; flex-wrap: wrap; gap: .65rem; margin-bottom: 2.5rem; color: #626262; font-size: .9rem; }
+.service-breadcrumb a,
+.service-related a { color: #a54118; }
+.service-detail article { max-width: 800px; margin: 0 auto; }
+.service-detail .eyebrow { color: #a54118; }
+.service-detail h1 { max-width: 18ch; margin: .5rem 0 1.25rem; font-size: clamp(2.4rem, 6vw, 4.5rem); }
+.service-detail__lead { color: #454545; font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.7; }
+.service-detail__image { width: 100%; max-height: 480px; object-fit: contain; margin: 2rem 0 3rem; background: #f5f5f5; border: 1px solid #e5e5e5; }
+.service-detail article section { margin: 2.5rem 0; }
+.service-detail article section p { color: #444; line-height: 1.8; }
+.service-detail__actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.25rem; }
+.service-detail__actions .hp-btn--ghost { color: #242424; border-color: #777; }
+.service-related { padding: 1.5rem; background: #f5f5f5; border-left: 4px solid var(--amber); }
+.service-related h2 { font-size: 1.25rem; }
+.service-related ul { display: flex; flex-wrap: wrap; gap: .8rem 1.5rem; margin: 0; padding-left: 1.2rem; }
+.service-detail-footer { color: #ddd; background: #000; font-size: .88rem; }
+.service-detail-footer a { color: #fff; }
+@media (max-width: 560px) {
+  .service-detail-nav img { width: 172px; }
+  .service-detail-footer { align-items: flex-start; flex-direction: column; }
 }

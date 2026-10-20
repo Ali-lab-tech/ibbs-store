@@ -1,5 +1,5 @@
 /* ==========================================================================
-   HOPS — main.js  (vanilla only, no jQuery)
+   IBBS — main.js  (vanilla only, no jQuery)
    One function per feature, guard clauses, IntersectionObserver,
    honours prefers-reduced-motion.
    ========================================================================== */
@@ -150,10 +150,10 @@
     nums.forEach(function (n) { obs.observe(n); });
   }
 
-  /* ---------- Beer filter by style ---------- */
-  function initBeerFilter() {
+  /* ---------- Product catalog filters ---------- */
+  function initProductFilter() {
     var bar = document.querySelector(".filter-bar");
-    var grid = document.querySelector(".beer-grid");
+    var grid = document.querySelector(".product-grid");
     if (!bar || !grid) return;
     var empty = document.querySelector(".no-results");
     var search = document.getElementById("productSearch");
@@ -165,7 +165,7 @@
       var style = active ? active.getAttribute("data-filter") : "all";
       var query = search ? search.value.trim().toLocaleLowerCase() : "";
       var shown = 0;
-      var cards = Array.prototype.slice.call(grid.querySelectorAll(".beer-card"));
+      var cards = Array.prototype.slice.call(grid.querySelectorAll(".catalog-card"));
       cards.forEach(function (card) {
         var categoryMatch = style === "all" || card.getAttribute("data-style") === style;
         var searchMatch = !query || (card.textContent || "").toLocaleLowerCase().indexOf(query) !== -1;
@@ -176,7 +176,7 @@
       if (count) count.textContent = shown + " product" + (shown === 1 ? "" : "s");
       if (empty) {
         empty.textContent = cards.length === 0
-          ? "No published product listings are available yet. Contact IBBS to ask about a specific part."
+          ? "Our product catalog is being updated. Contact IBBS to ask about a specific part or specification."
           : "No products match your search. Try another name or category.";
         empty.classList.toggle("show", shown === 0);
       }
@@ -199,9 +199,9 @@
   }
 
   /* ---------- Published product catalog ---------- */
-  function buildBeerCard(product) {
+  function buildProductCard(product) {
     var article = document.createElement("article");
-    article.className = "beer-card beer-card--custom";
+    article.className = "catalog-card catalog-card--custom";
     article.setAttribute("data-style", product.style);
     article.setAttribute("data-id", product.id);
     article.setAttribute("tabindex", "0");
@@ -210,7 +210,7 @@
     if (product.image) {
       var thumb = document.createElement("div");
       var image = document.createElement("img");
-      thumb.className = "beer-card__thumb";
+      thumb.className = "catalog-card__thumb";
       image.src = product.image;
       image.alt = product.imageAlt || product.name;
       image.width = 896;
@@ -226,13 +226,13 @@
     var name = document.createElement("h3");
     var category = document.createElement("span");
     var description = document.createElement("p");
-    body.className = "beer-card__body";
-    top.className = "beer-card__top";
+    body.className = "catalog-card__body";
+    top.className = "catalog-card__top";
     name.textContent = product.name;
     category.className = "style-chip";
     category.setAttribute("data-s", product.style);
     category.textContent = product.style;
-    description.className = "beer-notes";
+    description.className = "catalog-notes";
     description.textContent = product.shortDesc;
     top.appendChild(name);
     top.appendChild(category);
@@ -243,7 +243,7 @@
   }
 
   function initProductCatalog() {
-    var grid = document.querySelector(".beer-grid");
+    var grid = document.querySelector(".product-grid");
     var empty = document.querySelector(".no-results");
     var modal = document.getElementById("productDetailModal");
     var closeBtn = document.getElementById("productDetailClose");
@@ -295,7 +295,7 @@
       closeBtn.focus();
     };
     var visibleCount = function () {
-      return grid.querySelectorAll(".beer-card:not(.is-hidden)").length;
+      return grid.querySelectorAll(".catalog-card:not(.is-hidden)").length;
     };
 
     closeBtn.addEventListener("click", closeModal);
@@ -307,7 +307,7 @@
     });
 
     var appendProductCard = function (product) {
-      var card = buildBeerCard(product);
+      var card = buildProductCard(product);
       var activeFilter = document.querySelector(".filter-btn.is-active");
       var filterValue = activeFilter ? activeFilter.getAttribute("data-filter") : "all";
       card.classList.toggle("is-hidden", filterValue !== "all" && product.style !== filterValue);
@@ -405,6 +405,7 @@
       var count = products.length;
       if (badge) {
         badge.textContent = String(count);
+        badge.hidden = count === 0;
         badge.classList.toggle("show", count > 0);
       }
       bagBtn.setAttribute("aria-label", "Quote list, " + count + " item" + (count === 1 ? "" : "s"));
@@ -629,7 +630,7 @@
     initClientLogos();
     initReveal();
     initCountUp();
-    initBeerFilter();
+    initProductFilter();
     initProductCatalog();
     initBag();
     initLightbox();

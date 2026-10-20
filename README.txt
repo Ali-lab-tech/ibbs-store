@@ -31,8 +31,8 @@ permission.
 Do not copy supplier descriptions or make unverified specifications or compatibility
 claims.
 
-The product editor is available from the Products section's + button at
-product-admin.html. Its JavaScript password prompt is only a casual gate; a static
+The product editor is available directly at product-admin.html. Its JavaScript
+password prompt is only a casual gate; a static
 site cannot keep that password secret or provide real authentication. The editor
 prepares drafts only. Download its publish files, move any downloaded images into
 the site's img folder, and replace js/products.js with the downloaded catalog file.

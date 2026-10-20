@@ -8,7 +8,7 @@
     window.sessionStorage.removeItem("ibbsProductEditorAccess");
   } catch (storageError) { /* Some local file origins restrict session storage. */ }
   if (!allowedFromProductButton && window.prompt("Enter password to open the product editor:") !== "1998") {
-    window.location.replace("index.html#ontap");
+    window.location.replace("index.html#products");
     return;
   }
 
