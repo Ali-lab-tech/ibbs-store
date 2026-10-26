@@ -23,17 +23,15 @@ window.IBBS_PRODUCTS = [
     style: "Automation Products",
     shortDesc: "Cordless airbrush kit with rechargeable handheld compressor, 0.3mm dual-action spray gun, case, and maintenance needles.",
     fullDesc: "IBBS precision multifunction cordless airbrush kit with rechargeable handheld automatic air compressor, 0.3mm dual-action spray gun, protective case, and maintenance needles for industrial model coloring, coatings, and specialized calibration markings.",
-    image: "img/ibbs-portable-multifunction-airbrush-compressor-kit.png",
-    imageAlt: "IBBS precision multifunction cordless airbrush kit with rechargeable handheld automatic air compressor, 0.3mm dual-action spray gun, protective case, and maintenance needles for industrial model coloring, coatings, and specialized calibration markings.",
+    image: "img/ibbs-portable-multifunction-airbrush-compressor-kit.webp",
+    imageAlt: "IBBS cordless airbrush compressor kit with chrome spray gun and black rechargeable handheld compressor.",
     images: [
-      "img/ibbs-portable-multifunction-airbrush-compressor-kit.png",
-      "img/ibbs-portable-multifunction-airbrush-compressor-kit-box.png",
-      "img/ibbs-portable-multifunction-airbrush-compressor-kit-accessories.png"
+      "img/ibbs-portable-multifunction-airbrush-compressor-kit.webp",
+      "img/ibbs-portable-multifunction-airbrush-compressor-kit-branded.webp"
     ],
     imageAlts: [
-      "IBBS precision multifunction cordless airbrush kit with rechargeable handheld automatic air compressor, 0.3mm dual-action spray gun, protective case, and maintenance needles for industrial model coloring, coatings, and specialized calibration markings.",
-      "Portable airbrush compressor and spray gun displayed on the multifunction airbrush kit box.",
-      "Needles and spare airbrush components arranged inside the protective kit case."
+      "IBBS cordless airbrush compressor kit with chrome spray gun and black rechargeable handheld compressor.",
+      "Branded IBBS airbrush kit product graphic showing the chrome spray gun and portable compressor."
     ]
   }
 ];
