@@ -23,15 +23,17 @@ window.IBBS_PRODUCTS = [
     style: "Automation Products",
     shortDesc: "Cordless airbrush kit with rechargeable handheld compressor, 0.3mm dual-action spray gun, case, and maintenance needles.",
     fullDesc: "IBBS precision multifunction cordless airbrush kit with rechargeable handheld automatic air compressor, 0.3mm dual-action spray gun, protective case, and maintenance needles for industrial model coloring, coatings, and specialized calibration markings.",
-    image: "img/ibbs-portable-multifunction-airbrush-compressor-kit.webp",
-    imageAlt: "IBBS cordless airbrush compressor kit with chrome spray gun and black rechargeable handheld compressor.",
+    image: "img/ibbs-portable-multifunction-airbrush-compressor-kit-1.jpg",
+    imageAlt: "Portable multifunction airbrush compressor kit with chrome dual-action spray gun and rechargeable handheld compressor, view 1.",
     images: [
-      "img/ibbs-portable-multifunction-airbrush-compressor-kit.webp",
-      "img/ibbs-portable-multifunction-airbrush-compressor-kit-branded.webp"
+      "img/ibbs-portable-multifunction-airbrush-compressor-kit-1.jpg",
+      "img/ibbs-portable-multifunction-airbrush-compressor-kit-2.jpg",
+      "img/ibbs-portable-multifunction-airbrush-compressor-kit-3.jpg"
     ],
     imageAlts: [
-      "IBBS cordless airbrush compressor kit with chrome spray gun and black rechargeable handheld compressor.",
-      "Branded IBBS airbrush kit product graphic showing the chrome spray gun and portable compressor."
+      "Portable multifunction airbrush compressor kit with chrome dual-action spray gun and rechargeable handheld compressor, view 1.",
+      "Portable airbrush kit spray gun and handheld compressor shown with the product case, view 2.",
+      "Accessories included with the portable multifunction airbrush compressor kit, view 3."
     ]
   }
 ];
