@@ -8,13 +8,17 @@ window.IBBS_PRODUCTS = [
     style: "Electrical Items",
     shortDesc: "PID digital temperature controller with dual blue display and relay/SSR output. Contact IBBS to confirm the model and specifications.",
     fullDesc: "Industrial PID digital temperature controller with dual PV and SV displays. Contact IBBS to confirm the exact model, relay/SSR configuration, and electrical specifications.",
-    image: "img/industrial-pid-temperature-controller-relay-ssr.webp",
-    imageAlt: "Industrial PID digital temperature controller with dual blue display showing PV and SV values, distributed by IBBS.",
+    image: "img/industrial-pid-temperature-controller-display-1.jpg",
+    imageAlt: "Industrial PID temperature controllers with dual PV and SV digital displays, front view.",
     images: [
-      "img/industrial-pid-temperature-controller-relay-ssr.webp"
+      "img/industrial-pid-temperature-controller-display-1.jpg",
+      "img/industrial-pid-temperature-controller-display-2.jpg",
+      "img/industrial-pid-temperature-controller-display-3.jpg"
     ],
     imageAlts: [
-      "Industrial PID digital temperature controller with dual blue display showing PV and SV values, distributed by IBBS."
+      "Industrial PID temperature controllers with dual PV and SV digital displays, front view.",
+      "Industrial digital PID temperature controller with front display and side wiring specification labels.",
+      "Three industrial PID temperature controller models with dual digital displays and blue control buttons."
     ]
   },
   {
