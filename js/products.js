@@ -39,5 +39,26 @@ window.IBBS_PRODUCTS = [
       "Portable airbrush kit spray gun and handheld compressor shown with the product case, view 2.",
       "Accessories included with the portable multifunction airbrush compressor kit, view 3."
     ]
+  },
+  {
+    id: "brahma-uv1-18210060-flame-detector",
+    name: "Brahma UV1 UV Flame Detector 18210060 for Boilers & Burners",
+    style: "Boiler Parts",
+    shortDesc: "Brahma UV1 ultraviolet flame sensor for compatible gas and mixed gas/oil burners. Contact IBBS to confirm control-unit compatibility and the required sensitivity version.",
+    fullDesc: "Brahma UV1 UV flame detector, part number 18210060, for flame monitoring in compatible gas and mixed gas/oil burner systems, including boiler applications. The manufacturer lists UV1 sensitivity in the 190–290 nm range and offers UV1 with a high-sensitivity /H option. Confirm the exact variant and burner-control compatibility before ordering.",
+    image: "img/brahma-uv1-18210060-uv-flame-detector-1.jpg",
+    imageAlt: "Brahma UV1 18210060 ultraviolet flame detector with wired sensor body, close-up view.",
+    images: [
+      "img/brahma-uv1-18210060-uv-flame-detector-1.jpg",
+      "img/brahma-uv1-18210060-uv-flame-detector-2.jpg",
+      "img/brahma-uv1-18210060-uv-flame-detector-3.jpg",
+      "img/brahma-uv1-18210060-uv-flame-detector-4.jpg"
+    ],
+    imageAlts: [
+      "Brahma UV1 18210060 ultraviolet flame detector with wired sensor body, close-up view.",
+      "Multiple Brahma UV1 flame detector sensors with cables for boiler and burner systems.",
+      "Side view of a Brahma UV1 UV flame sensor showing its mounting bracket and cable.",
+      "Brahma UV1 18210060 flame detector product boxes showing the manufacturer part code."
+    ]
   }
 ];
