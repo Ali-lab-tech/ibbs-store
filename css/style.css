@@ -673,6 +673,9 @@ img { max-width: 100%; height: auto; display: block; }
 .hp-detail__view-style { margin-bottom: 1rem; }
 .hp-detail__view-desc { color: var(--bone-dim); line-height: 1.6; margin-bottom: 1.4rem; }
 .filter-btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
   font-family: var(--ff-body);
   font-weight: 700;
   font-size: .76rem;
