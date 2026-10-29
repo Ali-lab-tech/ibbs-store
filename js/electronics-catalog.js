@@ -18,18 +18,22 @@
     return String(value || "").toLocaleLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").trim();
   }
 
+  function cleanProductText(value) {
+    return String(value || "").replace(/\bDigiLog(?:\.pk)?\b/gi, "").replace(/Why\s+Buy\s+from\s+\?/gi, "").replace(/\s+([,.;:!?])/g, "$1").replace(/\s*[|–—-]+\s*$/g, "").replace(/\s+/g, " ").trim();
+  }
+
   function makeCard(product) {
     var link = document.createElement("a");
     link.className = "electronics-card";
     link.href = "electronics/" + encodeURIComponent(product.pageSlug || product.handle) + ".html";
-    link.setAttribute("aria-label", "View product details: " + product.name);
+    link.setAttribute("aria-label", "View product details: " + cleanProductText(product.name));
 
     if (product.image) {
       var imageWrap = document.createElement("div");
       imageWrap.className = "electronics-card__image";
       var image = document.createElement("img");
       image.src = product.image;
-      image.alt = product.imageAlt || product.name + " product photo.";
+      image.alt = cleanProductText(product.imageAlt || product.name + " product photo.");
       image.width = 480;
       image.height = 480;
       image.loading = "lazy";
@@ -49,7 +53,7 @@
     category.className = "electronics-card__category";
     category.textContent = product.style || "Electronics Parts";
     var heading = document.createElement("h3");
-    heading.textContent = product.name;
+    heading.textContent = cleanProductText(product.name);
     body.appendChild(category);
     body.appendChild(heading);
     if (product.sku) {
@@ -61,7 +65,7 @@
     if (product.shortDesc) {
       var description = document.createElement("p");
       description.className = "electronics-card__description";
-      description.textContent = product.shortDesc;
+      description.textContent = cleanProductText(product.shortDesc);
       body.appendChild(description);
     }
     var more = document.createElement("span");

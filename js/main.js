@@ -233,18 +233,22 @@
     var loaded = false;
     var loading = false;
 
+    function cleanProductText(value) {
+      return String(value || "").replace(/\bDigiLog(?:\.pk)?\b/gi, "").replace(/Why\s+Buy\s+from\s+\?/gi, "").replace(/\s+([,.;:!?])/g, "$1").replace(/\s*[|–—-]+\s*$/g, "").replace(/\s+/g, " ").trim();
+    }
+
     function renderCard(product) {
       var card = document.createElement("article");
       card.className = "catalog-card catalog-card--custom";
       card.tabIndex = 0;
       card.setAttribute("role", "link");
-      card.setAttribute("aria-label", "View " + product.name + " details");
+      card.setAttribute("aria-label", "View " + cleanProductText(product.name) + " details");
       if (product.image) {
         var thumb = document.createElement("div");
         var image = document.createElement("img");
         thumb.className = "catalog-card__thumb";
         image.src = product.image;
-        image.alt = product.imageAlt || product.name + " product photo";
+        image.alt = cleanProductText(product.imageAlt || product.name + " product photo");
         image.width = 480;
         image.height = 480;
         image.loading = "lazy";
@@ -259,11 +263,11 @@
       var description = document.createElement("p");
       body.className = "catalog-card__body";
       top.className = "catalog-card__top";
-      name.textContent = product.name;
+      name.textContent = cleanProductText(product.name);
       chip.className = "style-chip";
       chip.textContent = product.style || "Electronics Parts";
       description.className = "catalog-notes";
-      description.textContent = product.shortDesc || "Contact IBBS to confirm product details and availability.";
+      description.textContent = cleanProductText(product.shortDesc || "Contact IBBS to confirm product details and availability.");
       top.appendChild(name);
       top.appendChild(chip);
       body.appendChild(top);

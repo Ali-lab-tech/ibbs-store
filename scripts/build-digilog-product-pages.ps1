@@ -20,6 +20,14 @@ function Get-MetaDescription([string]$Name, [string]$Summary) {
   return ($text.Substring(0, $cut).TrimEnd() + '…')
 }
 
+function Remove-ProviderMentions([string]$Value) {
+  $text = [regex]::Replace([string]$Value, '(?i)\bDigiLog(?:\.pk)?\b', '')
+  $text = [regex]::Replace($text, '(?i)Why\s+Buy\s+from\s*\?', '')
+  $text = [regex]::Replace($text, '\s+([,.;:!?])', '$1')
+  $text = [regex]::Replace($text, '(?:\s*[|–—-]\s*)+$', '')
+  return [regex]::Replace($text, '\s+', ' ').Trim()
+}
+
 function Get-SafeHandle([string]$Handle) {
   $slug = [regex]::Replace($Handle.ToLowerInvariant(), '[^a-z0-9-]', '').Trim('-')
   if ($slug.Length -gt 80) {
@@ -59,9 +67,9 @@ foreach ($product in $indexedProducts) {
   $detail = $detailsById[[string]$product.id]
   if (-not $detail) { continue }
 
-  $name = [string]$product.name
-  $summary = [string]$product.shortDesc
-  $description = [string]$detail.fullDesc
+  $name = Remove-ProviderMentions ([string]$product.name)
+  $summary = Remove-ProviderMentions ([string]$product.shortDesc)
+  $description = Remove-ProviderMentions ([string]$detail.fullDesc)
   if (-not $description) { $description = "No detailed description was provided in the source listing for $name. Contact IBBS to confirm specifications and current availability." }
   $seoTitle = "$name | IBBS Pakistan"
   $metaDescription = Get-MetaDescription $name $summary
@@ -74,10 +82,6 @@ foreach ($product in $indexedProducts) {
   $descriptionHtml = Encode-Html $description
   $sku = [string]$product.sku
   $skuHtml = Encode-Html $sku
-  $sourceUrl = [string]$product.sourceUrl
-  if ($sourceUrl -notmatch '^https://digilog\.pk/products/[a-z0-9-]+$') { $sourceUrl = 'https://digilog.pk/' }
-  $sourceUrlHtml = Encode-Html $sourceUrl
-
   $images = [System.Collections.Generic.List[string]]::new()
   $imageUrls = [System.Collections.Generic.List[string]]::new()
   $imageNumber = 0
@@ -86,7 +90,7 @@ foreach ($product in $indexedProducts) {
     if ($src -notmatch '^https://cdn\.shopify\.com/') { continue }
     $imageNumber++
     $imageUrls.Add($src)
-    $alt = [string]$image.alt
+    $alt = Remove-ProviderMentions ([string]$image.alt)
     if (-not $alt) { $alt = "$name product photo, view $imageNumber." }
     $srcHtml = Encode-Html $src
     $altHtml = Encode-Html $alt
@@ -96,7 +100,7 @@ foreach ($product in $indexedProducts) {
   }
   if ($images.Count -eq 0 -and $product.image -match '^https://cdn\.shopify\.com/') {
     $srcHtml = Encode-Html ([string]$product.image)
-    $altHtml = Encode-Html ([string]$product.imageAlt)
+    $altHtml = Encode-Html (Remove-ProviderMentions ([string]$product.imageAlt))
     $images.Add("<img src=`"$srcHtml`" alt=`"$altHtml`" width=`"480`" height=`"480`" loading=`"eager`" decoding=`"async`" fetchpriority=`"high`">")
     $imageUrls.Add([string]$product.image)
   }
@@ -171,10 +175,9 @@ foreach ($product in $indexedProducts) {
           <div class="electronics-product-copy">
             <h2>Product details</h2>
             <p>$descriptionHtml</p>
-            <p class="electronics-product-copy__note">Product descriptions and image links are included with permission from DigiLog.pk. Contact IBBS to confirm current availability, exact model, and pricing.</p>
+            <p class="electronics-product-copy__note">Contact IBBS to confirm current availability, exact model, and pricing.</p>
             <div class="electronics-product-actions">
               <a class="hp-btn hp-btn--amber" href="$quoteUrlHtml" target="_blank" rel="noopener">Request an IBBS Quote</a>
-              <a class="hp-btn hp-btn--ghost" href="$sourceUrlHtml" target="_blank" rel="noopener">View DigiLog Listing</a>
             </div>
           </div>
         </div>
