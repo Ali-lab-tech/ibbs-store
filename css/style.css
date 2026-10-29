@@ -691,6 +691,18 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .filter-btn:hover { border-color: var(--amber); color: var(--bone); }
 .filter-btn.is-active { background: var(--amber); border-color: var(--amber); color: var(--ink); }
+.filter-bar .filter-btn[aria-pressed="false"]:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+[hidden] { display: none !important; }
+.inline-electronics { margin: 0 0 2rem; }
+.inline-electronics__heading { margin: 0 0 .4rem; font-family: var(--ff-display); font-size: 1.8rem; text-transform: uppercase; }
+.inline-electronics .catalog-notes { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
+.inline-electronics__controls { display: grid; grid-template-columns: minmax(240px, 1fr) minmax(220px, 320px); gap: 1rem; margin-bottom: 1rem; }
+.inline-electronics__category { display: grid; gap: .4rem; color: var(--smoke); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.inline-electronics__category select { min-height: 48px; padding: .5rem .8rem; border: 1px solid var(--ink-line); border-radius: 8px; background: var(--ink-3); color: var(--bone); font: inherit; }
+.inline-electronics__pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem; margin: 1.5rem 0 0; }
+.inline-electronics__pagination button { min-width: 40px; min-height: 40px; border: 1px solid var(--ink-line); border-radius: 7px; background: var(--ink-3); color: var(--bone); cursor: pointer; }
+.inline-electronics__pagination button[aria-current="page"] { border-color: var(--amber); background: var(--amber); color: var(--ink); font-weight: 800; }
+.inline-electronics__pagination button:disabled { opacity: .45; cursor: not-allowed; }
 
 .product-grid {
   display: grid;
@@ -808,6 +820,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .no-results.show { display: block; }
 @media (max-width: 600px) {
+  .inline-electronics__controls { grid-template-columns: 1fr; }
   .catalog-tools { align-items: stretch; flex-direction: column; }
   .catalog-search { width: 100%; }
   .product-grid { grid-template-columns: minmax(0, 1fr); }

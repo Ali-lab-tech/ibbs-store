@@ -153,16 +153,27 @@
   /* ---------- Product catalog filters ---------- */
   function initProductFilter() {
     var bar = document.querySelector(".filter-bar");
-    var grid = document.querySelector(".product-grid");
+    var grid = document.getElementById("industrialProductGrid");
     if (!bar || !grid) return;
-    var empty = document.querySelector(".no-results");
+    var empty = document.getElementById("industrialNoResults");
     var search = document.getElementById("productSearch");
     var count = document.getElementById("productCount");
+    var tools = document.querySelector(".catalog-tools");
+    var electronics = document.getElementById("inlineElectronics");
     var buttons = Array.prototype.slice.call(bar.querySelectorAll(".filter-btn"));
 
     var apply = function () {
       var active = bar.querySelector(".filter-btn.is-active");
       var style = active ? active.getAttribute("data-filter") : "all";
+      var isElectronics = style === "electronics";
+      grid.hidden = isElectronics;
+      if (empty) empty.hidden = isElectronics;
+      if (electronics) electronics.hidden = !isElectronics;
+      if (tools) tools.hidden = isElectronics;
+      if (isElectronics) {
+        bar.dispatchEvent(new Event("electronicsviewchange"));
+        return;
+      }
       var query = search ? search.value.trim().toLocaleLowerCase() : "";
       var shown = 0;
       var cards = Array.prototype.slice.call(grid.querySelectorAll(".catalog-card"));
@@ -192,10 +203,166 @@
       btn.classList.add("is-active");
       btn.setAttribute("aria-pressed", "true");
       apply();
+      if (btn.getAttribute("data-filter") === "electronics") {
+        history.replaceState(null, "", "#products-electronics");
+      } else if (location.hash === "#products-electronics") {
+        history.replaceState(null, "", "#products");
+      }
     });
     if (search) search.addEventListener("input", apply);
     bar.addEventListener("catalogchange", apply);
     apply();
+  }
+
+  /* ---------- Electronics displayed inside the main product catalog ---------- */
+  function initInlineElectronicsCatalog() {
+    var panel = document.getElementById("inlineElectronics");
+    var grid = document.getElementById("inlineElectronicsGrid");
+    var search = document.getElementById("inlineElectronicsSearch");
+    var category = document.getElementById("inlineElectronicsCategory");
+    var count = document.getElementById("inlineElectronicsCount");
+    var status = document.getElementById("inlineElectronicsStatus");
+    var pagination = document.getElementById("inlineElectronicsPagination");
+    var filterBar = document.querySelector(".filter-bar");
+    if (!panel || !grid || !search || !category || !count || !status || !pagination || !filterBar) return;
+
+    var products = [];
+    var filtered = [];
+    var page = 1;
+    var pageSize = 24;
+    var loaded = false;
+    var loading = false;
+
+    function renderCard(product) {
+      var card = document.createElement("article");
+      card.className = "catalog-card catalog-card--custom";
+      card.tabIndex = 0;
+      card.setAttribute("role", "link");
+      card.setAttribute("aria-label", "View " + product.name + " details");
+      if (product.image) {
+        var thumb = document.createElement("div");
+        var image = document.createElement("img");
+        thumb.className = "catalog-card__thumb";
+        image.src = product.image;
+        image.alt = product.imageAlt || product.name + " product photo";
+        image.width = 480;
+        image.height = 480;
+        image.loading = "lazy";
+        image.decoding = "async";
+        thumb.appendChild(image);
+        card.appendChild(thumb);
+      }
+      var body = document.createElement("div");
+      var top = document.createElement("div");
+      var name = document.createElement("h3");
+      var chip = document.createElement("span");
+      var description = document.createElement("p");
+      body.className = "catalog-card__body";
+      top.className = "catalog-card__top";
+      name.textContent = product.name;
+      chip.className = "style-chip";
+      chip.textContent = product.style || "Electronics Parts";
+      description.className = "catalog-notes";
+      description.textContent = product.shortDesc || "Contact IBBS to confirm product details and availability.";
+      top.appendChild(name);
+      top.appendChild(chip);
+      body.appendChild(top);
+      body.appendChild(description);
+      card.appendChild(body);
+      var openDetails = function () {
+        window.location.href = "electronics/" + encodeURIComponent(product.pageSlug || product.handle) + ".html";
+      };
+      card.addEventListener("click", openDetails);
+      card.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openDetails(); }
+      });
+      return card;
+    }
+
+    function render() {
+      var pages = Math.max(1, Math.ceil(filtered.length / pageSize));
+      page = Math.min(page, pages);
+      var start = (page - 1) * pageSize;
+      var fragment = document.createDocumentFragment();
+      filtered.slice(start, start + pageSize).forEach(function (product) { fragment.appendChild(renderCard(product)); });
+      grid.replaceChildren(fragment);
+      grid.setAttribute("aria-busy", "false");
+      count.textContent = "Showing " + (filtered.length ? start + 1 : 0) + "–" + Math.min(start + pageSize, filtered.length) + " of " + filtered.length.toLocaleString() + " matching products (" + products.length.toLocaleString() + " total)";
+      status.textContent = filtered.length ? "" : "No electronics parts match your search. Try another keyword or category.";
+      status.classList.toggle("show", !filtered.length);
+      pagination.replaceChildren();
+      if (pages > 1) {
+        var first = Math.max(1, page - 2);
+        var last = Math.min(pages, page + 2);
+        var addButton = function (label, value, disabled, current) {
+          var button = document.createElement("button");
+          button.type = "button";
+          button.textContent = label;
+          button.disabled = disabled;
+          if (current) button.setAttribute("aria-current", "page");
+          button.addEventListener("click", function () { page = value; render(); panel.scrollIntoView({ behavior: "smooth", block: "start" }); });
+          pagination.appendChild(button);
+        };
+        addButton("Previous", page - 1, page === 1, false);
+        for (var number = first; number <= last; number++) addButton(String(number), number, false, number === page);
+        addButton("Next", page + 1, page === pages, false);
+      }
+    }
+
+    function applyFilters() {
+      var query = search.value.trim().toLocaleLowerCase();
+      var selected = category.value;
+      filtered = products.filter(function (product) {
+        if (selected !== "all" && product.style !== selected) return false;
+        return !query || [product.name, product.style, product.sku, product.shortDesc, (product.tags || []).join(" ")].join(" ").toLocaleLowerCase().indexOf(query) !== -1;
+      });
+      page = 1;
+      render();
+    }
+
+    function loadCatalog() {
+      if (loaded || loading) return;
+      loading = true;
+      status.textContent = "Loading electronics products…";
+      status.classList.add("show");
+      grid.setAttribute("aria-busy", "true");
+      fetch("data/digilog-products.json", { credentials: "same-origin" })
+        .then(function (response) { if (!response.ok) throw new Error("Catalog request failed (" + response.status + ")"); return response.json(); })
+        .then(function (catalog) {
+          products = Array.isArray(catalog.products) ? catalog.products : [];
+          if (!products.length) throw new Error("No electronics products found.");
+          Array.from(new Set(products.map(function (product) { return product.style; }).filter(Boolean))).sort().forEach(function (name) {
+            var option = document.createElement("option"); option.value = name; option.textContent = name; category.appendChild(option);
+          });
+          loaded = true;
+          applyFilters();
+        })
+        .catch(function (error) {
+          grid.setAttribute("aria-busy", "false");
+          status.textContent = "Electronics products could not be loaded. Please reload and try again.";
+          status.classList.add("show");
+          count.textContent = "";
+          console.error("IBBS inline electronics catalog error:", error);
+        })
+        .finally(function () { loading = false; });
+    }
+
+    filterBar.addEventListener("electronicsviewchange", loadCatalog);
+    document.querySelectorAll('a[href$="#products-electronics"]').forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        history.replaceState(null, "", "#products-electronics");
+        var button = filterBar.querySelector('[data-filter="electronics"]');
+        if (button && !button.classList.contains("is-active")) button.click();
+        panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+    search.addEventListener("input", applyFilters);
+    category.addEventListener("change", applyFilters);
+    if (location.hash === "#products-electronics") {
+      var button = filterBar.querySelector('[data-filter="electronics"]');
+      if (button) button.click();
+    }
   }
 
   /* ---------- Published product catalog ---------- */
@@ -243,8 +410,8 @@
   }
 
   function initProductCatalog() {
-    var grid = document.querySelector(".product-grid");
-    var empty = document.querySelector(".no-results");
+    var grid = document.getElementById("industrialProductGrid");
+    var empty = document.getElementById("industrialNoResults");
     var modal = document.getElementById("productDetailModal");
     var closeBtn = document.getElementById("productDetailClose");
     var gallery = document.getElementById("productDetailGallery");
@@ -632,6 +799,7 @@
     initCountUp();
     initProductFilter();
     initProductCatalog();
+    initInlineElectronicsCatalog();
     initBag();
     initLightbox();
     initNewsletter();
