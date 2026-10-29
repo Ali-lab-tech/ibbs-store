@@ -46,6 +46,15 @@
 .electronics-product-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 112px), 1fr)); align-content: start; gap: .75rem; }
 .electronics-product-gallery img { display: block; width: 100%; max-width: 340px; aspect-ratio: 1 / 1; justify-self: start; padding: .5rem; border: 1px solid var(--ink-line, rgba(255,255,255,.12)); border-radius: 10px; background: #fff; object-fit: contain; }
 .electronics-product-copy { min-width: 0; }
+.electronics-product-nav { display: flex; align-items: center; justify-content: center; gap: 1.25rem; }
+.electronics-product-nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--bone, #f5f2ec); text-decoration: none; white-space: nowrap; }
+.electronics-product-nav a:hover { color: var(--amber, #f37021); }
+.electronics-breadcrumbs { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .65rem; line-height: 1.6; }
+.electronics-breadcrumbs > span[aria-hidden="true"] { color: var(--amber, #f37021); }
+.electronics-product-hero h1 { max-width: 1000px; font-size: clamp(2.35rem, 5vw, 4.2rem); line-height: 1.04; }
+.electronics-product-copy > p { margin: 0 0 .9rem; color: var(--smoke, #b7b2aa); line-height: 1.75; }
+.electronics-description-section__heading { margin: 1.4rem 0 .55rem; color: var(--bone, #f5f2ec); font-size: 1.1rem; font-weight: 800; }
+.electronics-description-section__heading:first-of-type { margin-top: 0; }
 .electronics-product-copy h2 { margin: 0 0 1rem; font-family: var(--ff-display, Impact, sans-serif); font-size: clamp(1.8rem, 3vw, 2.5rem); text-transform: uppercase; }
 .electronics-product-copy > p { color: var(--smoke, #b7b2aa); line-height: 1.75; }
 .electronics-product-copy__note { margin-top: 1.5rem; font-size: .9rem; }
@@ -57,4 +66,5 @@
   .electronics-page .footer-bottom { flex-direction: column; }
   .electronics-product-detail > .container { grid-template-columns: minmax(0, 1fr); }
   .electronics-product-gallery { grid-template-columns: repeat(auto-fill, minmax(min(100%, 112px), 1fr)); }
+  .electronics-product-nav { gap: .75rem; }
 }

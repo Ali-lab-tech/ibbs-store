@@ -145,7 +145,8 @@ foreach ($product in $indexedProducts) {
     <link rel="icon" type="image/svg+xml" href="../img/ibbs-seal-icon.svg">
     <link rel="stylesheet" href="../css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css?v=20261026-1">
-    <link rel="stylesheet" href="../css/electronics-catalog.css?v=20261029-2">
+    <link rel="stylesheet" href="../css/electronics-catalog.css?v=20261029-3">
+    <script src="../js/electronics-product-detail.js?v=20261029-1" defer></script>
     <script type="application/ld+json">$schemaJson</script>
   </head>
   <body class="electronics-page electronics-product-page">

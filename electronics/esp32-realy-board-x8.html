@@ -19,7 +19,7 @@
     <link rel="icon" type="image/svg+xml" href="../img/ibbs-seal-icon.svg">
     <link rel="stylesheet" href="../css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css?v=20261026-1">
-    <link rel="stylesheet" href="../css/electronics-catalog.css?v=20261029-2">
+    <link rel="stylesheet" href="../css/electronics-catalog.css?v=20261029-3">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"ESP32 Realy Board X8","description":"Product description This is a 8-relay board with an ESP32-WROOM-E. Each relay has COM+NO+NC exposed. Product descriptions don\u0027t seem to specify maximum load. Each relay supports 10Amp max load, acconding to the label. The board can be powered either via 7-30VDC or via 5VDC (separate connectors). It draws about 100mA with the relays off, and just over 500mA with all the relays on. I bought it from: https://www.aliexpress.us/item/3256802045374301.html GPIO Pinout This board has headers for every GPIO pin on its ESP32. Pin Comment 5V Do not use 5V for programming TX Exposed on board 3.3V level! RX Exposed on board 3.3V level! GND GND GPIO0 3.3V level! (Connected to a push button for programing) Basic Config esphome : name : ESP32 relayboard platform : ESP32 board : esp32dev # Status LED light : - platform : status_led name : \"RelayBoard Led\" restore_mode : ALWAYS_ON pin : number : GPIO23 # 8 relay outputs, exposed as switches in Home Assistant switch : - platform : gpio pin : GPIO32 name : Relay1 id : relay1 - platform : gpio pin : GPIO33 name : Relay2 id : relay2 - platform : gpio pin : GPIO25 name : Relay3 id : relay3 - platform : gpio pin : GPIO26 name : Relay4 id : relay4 - platform : gpio pin : GPIO27 name : Relay5 id : relay5 - platform : gpio pin : GPIO14 name : Relay6 id : relay6 - platform : gpio pin : GPIO12 name : Relay7 id : relay7 - platform : gpio pin : GPIO13 name : Relay8 id : relay8","image":["https://cdn.shopify.com/s/files/1/0744/0764/1366/files/esp32-realy-board-x8-1.jpg?v=1786804244"],"category":"Development Boards \u0026 Microcontrollers","sku":"b353","url":"https://ibbs-store.com/electronics/esp32-realy-board-x8.html"}</script>
   </head>
   <body class="electronics-page electronics-product-page">
@@ -58,5 +58,6 @@
       </section>
     </main>
     <footer class="hp-footer"><div class="container footer-bottom"><span>&copy; 2026 Industrial Boiler &amp; Burner Services (IBBS).</span><span><a href="../electronics.html">Electronics Parts</a> &middot; <a href="../index.html">IBBS Home</a></span></div></footer>
+      <script src="../js/electronics-product-detail.js?v=20261029-1" defer></script>
   </body>
 </html>
