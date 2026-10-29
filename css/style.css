@@ -695,7 +695,12 @@ img { max-width: 100%; height: auto; display: block; }
 [hidden] { display: none !important; }
 .inline-electronics { margin: 0 0 2rem; }
 .inline-electronics__heading { margin: 0 0 .4rem; font-family: var(--ff-display); font-size: 1.8rem; text-transform: uppercase; }
-.inline-electronics .catalog-notes { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
+.inline-electronics .catalog-card--custom { min-height: 0; align-items: flex-start; gap: .85rem; padding: .85rem; }
+.inline-electronics .catalog-card--custom .catalog-card__thumb { width: 96px; height: 96px; }
+.inline-electronics .catalog-card--custom .catalog-card__top { gap: .35rem; }
+.inline-electronics .catalog-card--custom h3 { display: -webkit-box; overflow: hidden; max-height: 2.35em; font-size: 1.12rem; line-height: 1.17; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.inline-electronics .catalog-card--custom .style-chip { max-width: 100%; white-space: normal; line-height: 1.25; }
+.inline-electronics .catalog-card--custom .catalog-notes { display: -webkit-box; overflow: hidden; max-height: 2.9em; margin: .4rem 0 0; font-size: .82rem; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 .inline-electronics__controls { display: grid; grid-template-columns: minmax(240px, 1fr) minmax(220px, 320px); gap: 1rem; margin-bottom: 1rem; }
 .inline-electronics__category { display: grid; gap: .4rem; color: var(--smoke); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .inline-electronics__category select { min-height: 48px; padding: .5rem .8rem; border: 1px solid var(--ink-line); border-radius: 8px; background: var(--ink-3); color: var(--bone); font: inherit; }

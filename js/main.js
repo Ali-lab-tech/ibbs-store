@@ -264,10 +264,15 @@
       body.className = "catalog-card__body";
       top.className = "catalog-card__top";
       name.textContent = cleanProductText(product.name);
+      name.title = name.textContent;
       chip.className = "style-chip";
       chip.textContent = product.style || "Electronics Parts";
       description.className = "catalog-notes";
-      description.textContent = cleanProductText(product.shortDesc || "Contact IBBS to confirm product details and availability.");
+      var descriptionText = cleanProductText(product.shortDesc || "Contact IBBS to confirm product details and availability.");
+      if (descriptionText.toLowerCase().indexOf(name.textContent.toLowerCase()) === 0) {
+        descriptionText = descriptionText.slice(name.textContent.length).replace(/^\s*[-:|–—]?\s*/, "");
+      }
+      description.textContent = descriptionText.length > 115 ? descriptionText.slice(0, 112).trimEnd() + "…" : descriptionText;
       top.appendChild(name);
       top.appendChild(chip);
       body.appendChild(top);
