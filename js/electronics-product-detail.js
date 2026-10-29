@@ -29,10 +29,19 @@
   function formatProductDescription() {
     var copy = document.querySelector(".electronics-product-copy");
     if (!copy) return;
+    var intro = document.querySelector(".electronics-product-hero .container > p:not(.electronics-detail__sku)");
+    if (intro) intro.remove();
     var original = copy.querySelector("p:not(.electronics-product-copy__note)");
     if (!original) return;
 
     var description = original.textContent.replace(/\s+/g, " ").trim();
+    var productTitle = document.querySelector(".electronics-product-hero h1");
+    if (productTitle) {
+      var titleText = productTitle.textContent.replace(/\s+/g, " ").trim();
+      if (description.toLowerCase().indexOf(titleText.toLowerCase()) === 0) {
+        description = description.slice(titleText.length).trim();
+      }
+    }
     var headings = "Product Description|Key Features|Features|Product Specifications|Technical Specifications|Specification Details|Specifications|Applications|Compatibility|Package Includes|Package Contents|What's Included|Product Details";
     var marker = new RegExp("\\b(" + headings + ")\\s*:?\\s*", "gi");
     var sections = [];
